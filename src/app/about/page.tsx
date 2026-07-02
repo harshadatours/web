@@ -25,7 +25,7 @@ export default function AboutPage() {
           <div className="space-y-8">
             <h2 className="text-3xl md:text-5xl font-bold text-white">Our <span className="text-primary italic">Mission</span></h2>
             <p className="text-lg text-slate-400 leading-relaxed">
-              Our mission is to provide safe, comfortable, and affordable travel solutions to our customers. We believe that every journey should be an experience to cherish, whether it's a short city commute or a long outstation trip.
+              Our mission is to provide safe, comfortable, and affordable travel solutions to our customers. We believe that every journey should be an experience to cherish, whether it&apos;s a short city commute or a long outstation trip.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
               {[

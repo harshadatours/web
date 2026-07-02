@@ -9,19 +9,9 @@ import { getWhatsAppUrl } from '@/utils/whatsapp'
 
 export default function ToursPage() {
   const [searchTerm, setSearchTerm] = useState('')
-  const [filteredServices, setFilteredServices] = useState<string[]>(SERVICES)
-
-  useEffect(() => {
-    if (!searchTerm) {
-      setFilteredServices(SERVICES)
-    } else {
-      setFilteredServices(
-        SERVICES.filter(service => 
-          service.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      )
-    }
-  }, [searchTerm])
+  const filteredServices = searchTerm 
+    ? SERVICES.filter(service => service.toLowerCase().includes(searchTerm.toLowerCase()))
+    : SERVICES;
 
   const handleServiceWhatsApp = (serviceName: string) => {
     const message = `Hello Harshada Tours and Travels,\n\nI would like to inquire about/book the service: *${serviceName}*.\n\nPlease provide me with details on rates, vehicle options, and availability.`

@@ -9,27 +9,16 @@ import { CARS } from '@/lib/data'
 import { cn } from '@/lib/utils'
 
 export default function CarsPage() {
-  const [filteredCars, setFilteredCars] = useState<Car[]>(CARS)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedType, setSelectedType] = useState<string>('All')
   const [showFilters, setShowFilters] = useState(false)
 
-  useEffect(() => {
-    let result = CARS
-    
-    if (searchTerm) {
-      result = result.filter(car => 
-        car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        car.brand.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    }
-    
-    if (selectedType !== 'All') {
-      result = result.filter(car => car.type === selectedType)
-    }
-    
-    setFilteredCars(result)
-  }, [searchTerm, selectedType])
+  const filteredCars = CARS.filter(car => {
+    const matchesSearch = car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          car.brand.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesType = selectedType === 'All' || car.type === selectedType;
+    return matchesSearch && matchesType;
+  });
 
   return (
     <div className="min-h-screen pt-32 pb-20">
@@ -120,7 +109,7 @@ export default function CarsPage() {
               <Search className="w-12 h-12 text-slate-600" />
             </div>
             <h3 className="text-2xl font-bold text-white mb-2">No cars match your search</h3>
-            <p className="text-slate-500 max-w-sm mx-auto">Try adjusting your filters or search terms to find what you're looking for.</p>
+            <p className="text-slate-500 max-w-sm mx-auto">Try adjusting your filters or search terms to find what you&apos;re looking for.</p>
             <Button 
               variant="outline" 
               className="mt-8 rounded-2xl h-12"

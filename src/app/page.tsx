@@ -91,7 +91,7 @@ export default function Home() {
               { name: 'Sameer Kulkarni', role: 'Corporate Client', text: 'Harshada Tours has been our reliable partner for all corporate travel needs in Pune for years.' }
             ].map((t, i) => (
               <div key={i} className="glass p-8 rounded-3xl border-white/20 relative">
-                <div className="text-primary text-4xl mb-4 font-serif">"</div>
+                <div className="text-primary text-4xl mb-4 font-serif">&quot;</div>
                 <p className="text-foreground/80 mb-8 leading-relaxed italic">{t.text}</p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">
