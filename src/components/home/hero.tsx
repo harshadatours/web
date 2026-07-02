@@ -1,18 +1,48 @@
 "use client"
 
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Search, MapPin, Calendar, Users, Car } from 'lucide-react'
+import { Users, Search } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { getWhatsAppUrl } from '@/utils/whatsapp'
+
+import { useRouter } from 'next/navigation'
+import { TOURS } from '@/lib/data'
 
 export function Hero() {
+  const [searchQuery, setSearchQuery] = useState('')
+  const router = useRouter()
+
+  const handleSearch = (e?: React.FormEvent) => {
+    if (e) e.preventDefault()
+    if (!searchQuery.trim()) return
+
+    const query = searchQuery.trim().toLowerCase()
+    
+    const matchedTour = TOURS.find(tour => 
+      tour.title.toLowerCase().includes(query) || 
+      tour.destination.toLowerCase().includes(query)
+    )
+
+    if (matchedTour) {
+      router.push(`/tours/${matchedTour.slug}`)
+    } else {
+      const confirmed = window.confirm("Tour is available but not yet added in web. Contact directly via WhatsApp?")
+      if (confirmed) {
+        const message = `Hello Harshada Tours and Travels,\n\nI want to plan a tour to: *${searchQuery.trim()}*.\nPlease let me know the availability and details.`
+        const whatsappUrl = getWhatsAppUrl('919172936138', message)
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
+      }
+    }
+  }
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero-bg.png"
+          src="/hero-raigad-bg.png"
           alt="Travel Background"
           fill
           className="object-cover scale-105"
@@ -34,62 +64,22 @@ export function Hero() {
           <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto font-light">
             Luxury car rentals and professional chauffeur services from Pune to across Maharashtra. Experience comfort, safety, and reliability.
           </p>
-        </motion.div>
 
-        {/* Search Bar / Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-5xl mx-auto"
-        >
-          <div className="glass rounded-[2rem] p-6 md:p-8 shadow-2xl border-white/30">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-end">
-              {/* Destination */}
-              <div className="text-left">
-                <label className="text-[10px] font-bold text-primary uppercase tracking-widest mb-2 block ml-1">Destination</label>
-                <div className="flex items-center gap-3 bg-white/10 rounded-2xl px-4 py-3 border border-white/10">
-                  <MapPin className="text-primary w-4 h-4 shrink-0" />
-                  <input 
-                    type="text" 
-                    placeholder="Where to?" 
-                    className="bg-transparent border-none focus:ring-0 text-white placeholder:text-white/50 w-full text-sm"
-                  />
-                </div>
-              </div>
-
-              {/* Date */}
-              <div className="text-left">
-                <label className="text-[10px] font-bold text-primary uppercase tracking-widest mb-2 block ml-1">Travel Date</label>
-                <div className="flex items-center gap-3 bg-white/10 rounded-2xl px-4 py-3 border border-white/10">
-                  <Calendar className="text-primary w-4 h-4 shrink-0" />
-                  <input 
-                    type="date" 
-                    className="bg-transparent border-none focus:ring-0 text-white w-full text-sm [color-scheme:dark]"
-                  />
-                </div>
-              </div>
-
-              {/* Service Type */}
-              <div className="text-left">
-                <label className="text-[10px] font-bold text-primary uppercase tracking-widest mb-2 block ml-1">Service</label>
-                <div className="flex items-center gap-3 bg-white/10 rounded-2xl px-4 py-3 border border-white/10">
-                  <Car className="text-primary w-4 h-4 shrink-0" />
-                  <select className="bg-transparent border-none focus:ring-0 text-white w-full text-sm appearance-none outline-none">
-                    <option className="bg-slate-900">Local Rental</option>
-                    <option className="bg-slate-900">Outstation Trip</option>
-                    <option className="bg-slate-900">Airport Transfer</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Search Button */}
-              <Button size="lg" className="h-12 md:h-14 rounded-2xl text-base font-bold shadow-xl shadow-primary/20">
-                <Search className="mr-2 w-4 h-4" />
-                Find Now
-              </Button>
+          <form onSubmit={handleSearch} className="max-w-2xl mx-auto relative glass p-2 md:p-3 rounded-full flex flex-col sm:flex-row items-center gap-2 md:gap-4 border-white/30 shadow-2xl">
+            <div className="flex-1 w-full relative flex items-center pl-4">
+              <Search className="w-5 h-5 text-primary shrink-0" />
+              <input 
+                type="text"
+                placeholder="Where do you want to travel? (e.g. Mahabaleshwar)"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-transparent border-none focus:ring-0 text-white placeholder:text-white/60 px-4 py-3 outline-none"
+              />
             </div>
-          </div>
+            <Button type="submit" size="lg" className="w-full sm:w-auto h-12 md:h-14 rounded-full px-8 text-base font-bold shadow-xl shadow-primary/20">
+              Search & Book
+            </Button>
+          </form>
         </motion.div>
       </div>
 

@@ -61,10 +61,7 @@ export function TourCard({ tour }: TourCardProps) {
         </div>
 
         <div className="mt-auto pt-4 flex items-center justify-between border-t border-foreground/5">
-          <div>
-            <p className="text-xs text-muted-foreground">Starting from</p>
-            <p className="text-xl font-black text-foreground">₹{tour.price}</p>
-          </div>
+          <div className="flex-1"></div>
           <Button asChild size="sm" className="rounded-full px-6">
             <Link href={`/tours/${tour.slug}`}>
               Details

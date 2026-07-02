@@ -5,38 +5,17 @@ import { CarCard } from '@/components/cars/car-card'
 import { Car } from '@/lib/types/cars'
 import { Search, Filter, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { createClient } from '@/utils/supabase/client'
+import { CARS } from '@/lib/data'
 import { cn } from '@/lib/utils'
 
 export default function CarsPage() {
-  const [cars, setCars] = useState<Car[]>([])
-  const [filteredCars, setFilteredCars] = useState<Car[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [filteredCars, setFilteredCars] = useState<Car[]>(CARS)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedType, setSelectedType] = useState<string>('All')
   const [showFilters, setShowFilters] = useState(false)
-  
-  const supabase = createClient()
 
   useEffect(() => {
-    const fetchCars = async () => {
-      const { data, error } = await supabase
-        .from('cars')
-        .select('*')
-        .eq('is_available', true)
-        .order('created_at', { ascending: false })
-      
-      if (data) {
-        setCars(data as Car[])
-        setFilteredCars(data as Car[])
-      }
-      setIsLoading(false)
-    }
-    fetchCars()
-  }, [])
-
-  useEffect(() => {
-    let result = cars
+    let result = CARS
     
     if (searchTerm) {
       result = result.filter(car => 
@@ -50,7 +29,7 @@ export default function CarsPage() {
     }
     
     setFilteredCars(result)
-  }, [searchTerm, selectedType, cars])
+  }, [searchTerm, selectedType])
 
   return (
     <div className="min-h-screen pt-32 pb-20">
@@ -108,7 +87,7 @@ export default function CarsPage() {
               <div className="space-y-4">
                 <label className="text-xs font-bold uppercase tracking-widest text-primary">Vehicle Type</label>
                 <div className="flex flex-wrap gap-2">
-                  {['All', 'SUV', 'Sedan', 'Hatchback', 'Luxury'].map((type) => (
+                  {['All', 'SUV', 'Sedan', 'Luxury', 'Bus'].map((type) => (
                     <button
                       key={type}
                       onClick={() => setSelectedType(type)}
@@ -129,13 +108,7 @@ export default function CarsPage() {
         </div>
 
         {/* Cars Grid */}
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="glass rounded-[2.5rem] h-[500px] animate-pulse border-white/10" />
-            ))}
-          </div>
-        ) : filteredCars.length > 0 ? (
+        {filteredCars.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {filteredCars.map((car) => (
               <CarCard key={car.id} car={car} />

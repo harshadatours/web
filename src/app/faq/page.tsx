@@ -7,15 +7,15 @@ import { ChevronDown, HelpCircle } from 'lucide-react'
 const FAQS = [
   {
     question: "What types of cars do you have for rent?",
-    answer: "We offer a wide range of vehicles including Hatchbacks, Sedans (Honda City, Dzire), SUVs (Fortuner, Innova, Ertiga), and luxury buses for larger groups."
+    answer: "We offer a curated fleet of well-maintained vehicles including New Dizire 4+1, New Ertiga 6+1, Innova Crysta 6+1, Scorpio 11 (7+1), Tampo Travel 17 seater, and Tampo Travel 32 seater."
   },
   {
     question: "Do you provide drivers with car rentals?",
     answer: "Yes, we specialize in chauffeur-driven car rentals. Our drivers are highly experienced, professional, and familiar with both local and outstation routes."
   },
   {
-    question: "How do I book a tour package?",
-    answer: "You can browse our tour packages on the website, select your preferred date, and book online using Razorpay. Alternatively, you can call us or chat on WhatsApp for a custom itinerary."
+    question: "How do I book a tour package or car?",
+    answer: "You can browse our tour packages and cars on the website, select your preferred travel date, and request a booking instantly. You will be redirected to WhatsApp where our team will confirm your booking and details."
   },
   {
     question: "Are your prices inclusive of fuel and tolls?",

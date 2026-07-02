@@ -58,17 +58,13 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-6">Contact Us</h3>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-white/60 text-sm">Viman Nagar, Pune, Maharashtra, India</span>
-              </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
                 <span className="text-white/60 text-sm">+91 9172936138</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-white/60 text-sm">info@harshadatours.com</span>
+                <span className="text-white/60 text-sm">harshadatourstravels6138@gmail.com</span>
               </li>
             </ul>
           </div>

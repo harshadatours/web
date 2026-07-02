@@ -34,9 +34,6 @@ export function CarCard({ car }: CarCardProps) {
         <div className="absolute top-4 right-4 glass px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-primary">
           {car.type}
         </div>
-        <div className="absolute bottom-4 left-4 glass px-4 py-1 rounded-full text-lg font-bold text-foreground">
-          ₹{car.price_per_day}<span className="text-xs font-normal text-muted-foreground">/day</span>
-        </div>
       </div>
 
       {/* Content Section */}
@@ -82,11 +79,14 @@ export function CarCard({ car }: CarCardProps) {
             </a>
           </Button>
           <Button
+            asChild
             variant="glass"
             size="icon"
             className="w-14 h-14 rounded-2xl"
           >
-            <ArrowRight className="w-6 h-6" />
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+              <ArrowRight className="w-6 h-6" />
+            </a>
           </Button>
         </div>
       </div>

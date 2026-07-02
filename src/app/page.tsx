@@ -32,8 +32,8 @@ export default function Home() {
                 <Button asChild size="lg" className="h-16 px-10 rounded-2xl text-lg font-bold shadow-xl shadow-primary/20">
                   <a href="/cars">Explore Fleet</a>
                 </Button>
-                <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-lg font-bold border-white/10 hover:bg-white/5">
-                  View Pricing
+                <Button asChild variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-lg font-bold border-white/10 hover:bg-white/5">
+                  <a href="https://wa.me/919172936138" target="_blank" rel="noopener noreferrer">Inquire Pricing</a>
                 </Button>
               </div>
             </div>
@@ -45,8 +45,7 @@ export default function Home() {
                     <Image src="/fortuner.png" alt="Luxury Car" fill className="object-cover" />
                   </div>
                   <div className="flex justify-between items-center px-4 pb-2">
-                    <span className="font-bold text-xl">Toyota Fortuner</span>
-                    <span className="text-primary font-bold">₹4,500/day</span>
+                    <span className="font-bold text-xl">Toyota Innova Crysta</span>
                   </div>
                 </div>
               </div>
@@ -109,18 +108,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="container mx-auto px-4 pb-24">
-        <div className="glass bg-primary/10 border-primary/20 p-12 md:p-20 rounded-[4rem] text-center relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />
-          <h2 className="text-3xl md:text-5xl font-black mb-6">Stay Updated with <span className="text-primary italic">Special Offers</span></h2>
-          <p className="text-muted-foreground max-w-xl mx-auto mb-10">Subscribe to our newsletter and get exclusive deals on your first booking!</p>
-          <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
-            <input type="email" placeholder="Your email address" className="flex-1 bg-white border border-white/10 rounded-2xl py-4 px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all" />
-            <Button size="lg" className="rounded-2xl h-14 px-8 font-bold">Subscribe</Button>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 }

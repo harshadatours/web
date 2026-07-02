@@ -5,15 +5,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Phone, User, LayoutDashboard } from 'lucide-react'
+import { Menu, X, Phone, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { createClient } from '@/utils/supabase/client'
-import { type User as SupabaseUser } from '@supabase/supabase-js'
 
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Car Rental', href: '/cars' },
+  { name: 'Tours & Services', href: '/tours' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ]
@@ -22,35 +21,17 @@ export function Navbar() {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [user, setUser] = useState<SupabaseUser | null>(null)
-  const supabase = createClient()
-
-  // Hide navbar on dashboard routes to prevent clashing
-  const isDashboard = pathname?.startsWith('/dashboard') || pathname?.startsWith('/admin')
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
     }
 
-    // Initial user fetch
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      setUser(user)
-    })
-
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null)
-    })
-
     window.addEventListener('scroll', handleScroll)
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      subscription.unsubscribe()
     }
   }, [])
-
-  if (isDashboard) return null
 
   return (
     <header
@@ -78,7 +59,7 @@ export function Navbar() {
             "font-bold text-lg md:text-xl tracking-tight hidden sm:block",
             isScrolled ? "text-foreground" : "text-white"
           )}>
-            Harshada <span className="text-primary">Tours</span>
+            Harshada <span className="text-primary">Tours & Travels</span>
           </span>
         </Link>
 
@@ -100,6 +81,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <Button
+            asChild
             variant="ghost"
             size="sm"
             className={cn(
@@ -107,35 +89,23 @@ export function Navbar() {
               isScrolled ? "text-foreground" : "text-white hover:bg-white/10"
             )}
           >
-            <Phone className="w-4 h-4" />
-            <span className="text-xs">+91 9172936138</span>
+            <a href="tel:+919172936138">
+              <Phone className="w-4 h-4" />
+              <span className="text-xs">+91 9172936138</span>
+            </a>
           </Button>
-          
-          {user ? (
-            <Button
-              asChild
-              variant={isScrolled ? "default" : "glass"}
-              size="sm"
-              className="rounded-full px-5"
-            >
-              <Link href="/dashboard" className="flex items-center gap-2">
-                <LayoutDashboard className="w-4 h-4" />
-                <span>Dashboard</span>
-              </Link>
-            </Button>
-          ) : (
-            <Button
-              asChild
-              variant={isScrolled ? "default" : "glass"}
-              size="sm"
-              className="rounded-full px-5"
-            >
-              <Link href="/login" className="flex items-center gap-2">
-                <User className="w-4 h-4" />
-                <span>Login</span>
-              </Link>
-            </Button>
-          )}
+
+          <Button
+            asChild
+            variant={isScrolled ? "default" : "glass"}
+            size="sm"
+            className="rounded-full px-5"
+          >
+            <a href="https://wa.me/919172936138" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              <MessageCircle className="w-4 h-4" />
+              <span>Book Now</span>
+            </a>
+          </Button>
 
           {/* Mobile Toggle */}
           <button
@@ -173,8 +143,13 @@ export function Navbar() {
               ))}
               <hr className="border-foreground/10" />
               <div className="flex items-center justify-between px-4">
-                <span className="text-sm text-muted-foreground">+91 9172936138</span>
-                <Button size="sm" className="rounded-full">Book Now</Button>
+                <a href="tel:+919172936138" className="text-sm text-muted-foreground flex items-center gap-2">
+                  <Phone className="w-4 h-4" />
+                  <span>+91 9172936138</span>
+                </a>
+                <Button asChild size="sm" className="rounded-full">
+                  <a href="https://wa.me/919172936138" target="_blank" rel="noopener noreferrer">Book Now</a>
+                </Button>
               </div>
             </div>
           </motion.div>
