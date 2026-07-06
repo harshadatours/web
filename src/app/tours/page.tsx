@@ -1,17 +1,98 @@
 "use client"
 
 import React, { useState, useEffect } from 'react'
-import { TourCard } from '@/components/tours/tour-card'
-import { TOURS, SERVICES } from '@/lib/data'
+import Image from 'next/image'
+import { SERVICES, Service } from '@/lib/data'
 import { Search, MessageCircle, Navigation2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { getWhatsAppUrl } from '@/utils/whatsapp'
+import { cn } from '@/lib/utils'
+
+function ServiceCard({ service, handleServiceWhatsApp }: { service: Service, handleServiceWhatsApp: (name: string) => void }) {
+  const [activeImgIdx, setActiveImgIdx] = useState(0)
+
+  return (
+    <div className="glass rounded-3xl border-white/15 flex flex-col justify-between hover:scale-[1.03] hover:bg-white/5 transition-all duration-300 relative group overflow-hidden shadow-lg animate-in fade-in duration-300">
+      {/* Top indicator line */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-orange-400 z-10" />
+      
+      {/* Service Image (if available) */}
+      {service.images && service.images.length > 0 && (
+        <div className="relative h-48 w-full overflow-hidden">
+          <Image 
+            src={service.images[activeImgIdx]} 
+            alt={service.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+          {service.images.length > 1 && (
+            <span className="absolute top-4 right-4 glass px-3 py-1 rounded-full text-[10px] font-bold text-white z-10 flex items-center gap-1 shadow-lg border-white/20">
+              📸 {service.images.length} Photos
+            </span>
+          )}
+        </div>
+      )}
+
+      <div className="p-6 flex flex-col flex-1 justify-between">
+        <div className="mb-6">
+          {/* Show icon only if no cover image */}
+          {(!service.images || service.images.length === 0) && (
+            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+              <Navigation2 className="w-5 h-5" />
+            </div>
+          )}
+          
+          <h3 className="font-bold text-white text-lg mb-2 leading-snug group-hover:text-primary transition-colors">{service.name}</h3>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            {service.description || "Premium Fleet & Chauffeur Services Available"}
+          </p>
+
+          {/* Small image thumbnails for gallery if multiple images exist */}
+          {service.images && service.images.length > 1 && (
+            <div className="flex flex-wrap gap-2 mt-4">
+              {service.images.map((img, imgIdx) => (
+                <button 
+                  key={imgIdx} 
+                  onMouseEnter={() => setActiveImgIdx(imgIdx)}
+                  onClick={() => setActiveImgIdx(imgIdx)}
+                  className={cn(
+                    "relative w-12 h-10 rounded-lg overflow-hidden border transition-all duration-300 cursor-pointer",
+                    activeImgIdx === imgIdx 
+                      ? "border-primary scale-110 shadow-md shadow-primary/25 z-10" 
+                      : "border-white/10 opacity-70 hover:opacity-100 hover:scale-105"
+                  )}
+                >
+                  <Image src={img} alt={`${service.name} thumbnail`} fill className="object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+        
+        <Button 
+          onClick={() => handleServiceWhatsApp(service.name)}
+          className="w-full h-12 rounded-2xl text-sm font-semibold gap-2 shadow-xl shadow-primary/20 hover:scale-105 transition-transform"
+        >
+          <MessageCircle className="w-4 h-4 shrink-0" />
+          Book via WhatsApp
+        </Button>
+      </div>
+    </div>
+  )
+}
 
 export default function ToursPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const filteredServices = searchTerm 
-    ? SERVICES.filter(service => service.toLowerCase().includes(searchTerm.toLowerCase()))
+    ? SERVICES.filter(service => service.name.toLowerCase().includes(searchTerm.toLowerCase()))
     : SERVICES;
+
+  const sortedServices = [...filteredServices].sort((a, b) => {
+    const aHasImages = a.images && a.images.length > 0 ? 1 : 0;
+    const bHasImages = b.images && b.images.length > 0 ? 1 : 0;
+    return bHasImages - aHasImages;
+  });
 
   const handleServiceWhatsApp = (serviceName: string) => {
     const message = `Hello Harshada Tours and Travels,\n\nI would like to inquire about/book the service: *${serviceName}*.\n\nPlease provide me with details on rates, vehicle options, and availability.`
@@ -23,24 +104,6 @@ export default function ToursPage() {
     <div className="min-h-screen pt-32 pb-20">
       <div className="container mx-auto px-4">
         
-        {/* Curated Tour Packages Section */}
-        <div className="mb-16">
-          <div className="mb-12">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">Curated <span className="text-primary italic">Tour Packages</span></h1>
-            <p className="text-muted-foreground text-lg max-w-2xl">
-              Explore the hidden gems of Maharashtra with our expert-led tour packages. Luxury, comfort, and memories guaranteed.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {TOURS.map((tour) => (
-              <TourCard key={tour.id} tour={{ ...tour, rating: 4.8 }} />
-            ))}
-          </div>
-        </div>
-
-        <hr className="border-white/10 my-16" />
-
         {/* Trips & Services Section */}
         <div>
           <div className="text-center md:text-left mb-12">
@@ -65,31 +128,14 @@ export default function ToursPage() {
           </div>
 
           {/* Services Grid */}
-          {filteredServices.length > 0 ? (
+          {sortedServices.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {filteredServices.map((service, index) => (
-                <div 
-                  key={index}
-                  className="glass p-6 rounded-3xl border-white/15 flex flex-col justify-between hover:scale-[1.03] hover:bg-white/5 transition-all duration-300 relative group overflow-hidden shadow-lg"
-                >
-                  <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary to-orange-400" />
-                  
-                  <div className="mb-6 pl-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
-                      <Navigation2 className="w-5 h-5" />
-                    </div>
-                    <h3 className="font-bold text-white text-lg mb-2 leading-snug group-hover:text-primary transition-colors">{service}</h3>
-                    <p className="text-xs text-muted-foreground">Premium Fleet Available</p>
-                  </div>
-                  
-                  <Button 
-                    onClick={() => handleServiceWhatsApp(service)}
-                    className="w-full h-12 rounded-2xl text-sm font-semibold gap-2 shadow-xl shadow-primary/20 hover:scale-105 transition-transform"
-                  >
-                    <MessageCircle className="w-4 h-4 shrink-0" />
-                    Book via WhatsApp
-                  </Button>
-                </div>
+              {sortedServices.map((service, index) => (
+                <ServiceCard 
+                  key={index} 
+                  service={service} 
+                  handleServiceWhatsApp={handleServiceWhatsApp} 
+                />
               ))}
             </div>
           ) : (

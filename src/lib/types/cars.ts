@@ -13,6 +13,11 @@ export interface Car {
   description: string
   is_available: boolean
   created_at: string
+  price_per_km?: string
+  per_day_running?: string
+  toll_parking?: string
+  capacity?: string
+  car_type?: string
 }
 
 export type Database = {

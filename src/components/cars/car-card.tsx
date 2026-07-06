@@ -51,20 +51,49 @@ export function CarCard({ car }: CarCardProps) {
         </div>
 
         {/* Specs Grid */}
-        <div className="grid grid-cols-3 gap-4 mb-8">
-          <div className="flex flex-col items-center gap-2 p-3 bg-primary/5 rounded-2xl">
-            <Users className="w-5 h-5 text-primary" />
-            <span className="text-xs font-medium">{car.seats} Seats</span>
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="flex flex-col items-center justify-center text-center gap-2 p-3 bg-primary/5 rounded-2xl">
+            <Users className="w-5 h-5 text-primary shrink-0" />
+            <span className="text-[11px] font-medium leading-tight">{car.capacity || `${car.seats} Seats`}</span>
           </div>
-          <div className="flex flex-col items-center gap-2 p-3 bg-secondary/5 rounded-2xl">
-            <Fuel className="w-5 h-5 text-secondary" />
-            <span className="text-xs font-medium">{car.fuel_type}</span>
+          <div className="flex flex-col items-center justify-center text-center gap-2 p-3 bg-secondary/5 rounded-2xl">
+            <Fuel className="w-5 h-5 text-secondary shrink-0" />
+            <span className="text-[11px] font-medium leading-tight">{car.fuel_type}</span>
           </div>
-          <div className="flex flex-col items-center gap-2 p-3 bg-accent/5 rounded-2xl">
-            <Settings2 className="w-5 h-5 text-accent" />
-            <span className="text-xs font-medium capitalize">{car.transmission}</span>
+          <div className="flex flex-col items-center justify-center text-center gap-2 p-3 bg-accent/5 rounded-2xl">
+            <Settings2 className="w-5 h-5 text-accent shrink-0" />
+            <span className="text-[11px] font-medium leading-tight capitalize">{car.transmission}</span>
           </div>
         </div>
+
+        {/* Pricing & Rate Details */}
+        {(car.price_per_km || car.per_day_running || car.toll_parking) && (
+          <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-slate-400 font-medium">Price per KM</span>
+              <span className="font-bold text-primary">{car.price_per_km}</span>
+            </div>
+            <div className="h-px bg-white/5" />
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="flex flex-col gap-0.5">
+                <span className="text-slate-500 font-medium">Min Running</span>
+                <span className="font-semibold text-white">{car.per_day_running}/day</span>
+              </div>
+              <div className="flex flex-col gap-0.5 text-right">
+                <span className="text-slate-500 font-medium">Toll & Parking</span>
+                <span className="font-semibold text-amber-500">{car.toll_parking}</span>
+              </div>
+            </div>
+            {car.car_type && (
+              <>
+                <div className="h-px bg-white/5" />
+                <div className="text-center text-[10px] text-slate-400 font-semibold tracking-wider uppercase">
+                  ⚡ Type: {car.car_type}
+                </div>
+              </>
+            )}
+          </div>
+        )}
 
         {/* Action Buttons */}
         <div className="flex gap-3">

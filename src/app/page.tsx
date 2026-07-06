@@ -1,6 +1,9 @@
 import { Hero } from "@/components/home/hero";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { SERVICES } from "@/lib/data";
+import { MessageCircle, Navigation } from "lucide-react";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 export default function Home() {
   return (
@@ -56,6 +59,84 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Popular Cab Services & Trips Section */}
+      <section className="container mx-auto px-4 py-12">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            Popular <span className="text-primary italic">Cab Services & Trips</span>
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Book premium airport transfers and outstation cabs from Pune to top destinations. Reliable rides, verified drivers, and transparent pricing.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+          {SERVICES.filter(service => service.images && service.images.length > 0).map((service, index) => {
+            const whatsappUrl = getWhatsAppUrl(
+              '919172936138',
+              `Hello Harshada Tours and Travels,\n\nI would like to inquire about/book the service: *${service.name}*.\n\nPlease provide me with details on rates, vehicle options, and availability.`
+            );
+
+            return (
+              <div 
+                key={index}
+                className="glass rounded-3xl border-white/10 flex flex-col justify-between hover:scale-[1.03] hover:bg-white/5 transition-all duration-300 relative group overflow-hidden shadow-xl"
+              >
+                {/* Top line gradient */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-orange-400 z-10" />
+                
+                {/* Cover Image */}
+                {service.images && service.images.length > 0 && (
+                  <div className="relative h-48 w-full overflow-hidden">
+                    <Image 
+                      src={service.images[0]} 
+                      alt={service.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent" />
+                    
+                    {/* Category / Icon indicator */}
+                    <div className="absolute bottom-4 left-4 flex items-center gap-2 glass px-3 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-wider">
+                      <Navigation className="w-3 h-3 text-primary animate-pulse" />
+                      Trip Route
+                    </div>
+                  </div>
+                )}
+
+                <div className="p-6 flex flex-col flex-1 justify-between">
+                  <div className="mb-6">
+                    <h3 className="font-bold text-white text-lg mb-2 leading-snug group-hover:text-primary transition-colors">
+                      {service.name}
+                    </h3>
+                    <p className="text-xs text-muted-foreground leading-relaxed min-h-[3rem]">
+                      {service.description || "Premium outstation cabs and verified drivers for a comfortable ride."}
+                    </p>
+                  </div>
+                  
+                  <Button 
+                    asChild
+                    className="w-full h-12 rounded-2xl text-sm font-semibold gap-2 shadow-xl shadow-primary/20 hover:scale-105 transition-transform"
+                  >
+                    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="w-4 h-4 shrink-0" />
+                      Book Cab Now
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="text-center mt-12">
+          <Button asChild variant="outline" size="lg" className="rounded-2xl border-white/10 hover:bg-white/5 px-8">
+            <a href="/tours">View All Outstation Routes</a>
+          </Button>
+        </div>
+      </section>
+
       {/* Why Choose Us Section */}
       <section className="container mx-auto px-4">
         <div className="text-center mb-16">

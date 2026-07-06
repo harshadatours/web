@@ -14,106 +14,184 @@ export interface Tour {
   itinerary: { day: number; title: string; content: string }[];
 }
 
+export interface Service {
+  name: string;
+  images?: string[];
+  description?: string;
+}
+
 export const CARS: Car[] = [
   {
-    id: 'dzire',
-    name: 'New Dizire 4+1',
-    slug: 'new-dzire-4-1',
+    id: 'swift-dzire',
+    name: 'Swift Dzire',
+    slug: 'swift-dzire',
     brand: 'Maruti Suzuki',
     type: 'Sedan',
     transmission: 'Manual',
-    fuel_type: 'Petrol',
+    fuel_type: 'CNG',
     seats: 5,
-    price_per_day: 2200,
+    price_per_day: 3600,
     images: ['/dzire.png'],
     features: ['Air Conditioning', '4+1 Seating', 'Music System', 'Spacious Boot'],
-    description: 'Perfect budget-friendly sedan for business or family trips.',
+    description: 'Perfect budget-friendly sedan for business or family trips in and around Pune.',
     is_available: true,
-    created_at: new Date().toISOString()
+    created_at: new Date().toISOString(),
+    price_per_km: 'Rs. 12/km',
+    per_day_running: '300km',
+    toll_parking: 'Extra',
+    capacity: '4 + 1',
+    car_type: 'AC/ Non-Ac'
   },
   {
-    id: 'ertiga',
-    name: 'New Ertiga 6+1',
-    slug: 'new-ertiga-6-1',
+    id: 'toyota-etios',
+    name: 'Toyota Etios',
+    slug: 'toyota-etios',
+    brand: 'Toyota',
+    type: 'Sedan',
+    transmission: 'Manual',
+    fuel_type: 'Diesel',
+    seats: 5,
+    price_per_day: 3600,
+    images: ['/etios.png'],
+    features: ['Air Conditioning', '4+1 Seating', 'Reliable Performance', 'Ample Legroom'],
+    description: 'Extremely spacious and highly reliable sedan for smooth outstation rides.',
+    is_available: true,
+    created_at: new Date().toISOString(),
+    price_per_km: 'Rs. 12/km | 13/km',
+    per_day_running: '300km',
+    toll_parking: 'Extra',
+    capacity: '4 + 1',
+    car_type: 'AC/ Non-Ac'
+  },
+  {
+    id: 'suzuki-ertiga',
+    name: 'Suzuki Ertiga',
+    slug: 'suzuki-ertiga',
     brand: 'Maruti Suzuki',
     type: 'SUV',
     transmission: 'Manual',
     fuel_type: 'CNG',
     seats: 7,
-    price_per_day: 3200,
+    price_per_day: 4200,
     images: ['/ertiga.png'],
-    features: ['Air Conditioning', '6+1 Seating', 'Bluetooth Music', 'Comfortable Ride'],
-    description: 'Versatile 7-seater perfect for group travel and long weekend trips.',
+    features: ['Air Conditioning', '6+1 Seating', 'Smart Hybrid', 'Foldable Seats'],
+    description: 'Comfortable and economical 7-seater perfect for family trips and weekend getaways.',
     is_available: true,
-    created_at: new Date().toISOString()
+    created_at: new Date().toISOString(),
+    price_per_km: 'Rs. 14/km | 15/km',
+    per_day_running: '300km',
+    toll_parking: 'Extra',
+    capacity: '6 + 1',
+    car_type: 'AC/ Non-Ac'
   },
   {
-    id: 'innova-crysta',
-    name: 'Innova crysta 6+1',
-    slug: 'innova-crysta-6-1',
+    id: 'toyota-innova',
+    name: 'Toyota Innova',
+    slug: 'toyota-innova',
     brand: 'Toyota',
-    type: 'Luxury',
-    transmission: 'Manual',
-    fuel_type: 'Diesel',
-    seats: 7,
-    price_per_day: 4500,
-    images: ['/innova.png'],
-    features: ['Dual Zone AC', 'Captain Seats', 'Premium Interior', '6+1 Seating'],
-    description: 'High-end comfort and supreme build quality for ultimate travel satisfaction.',
-    is_available: true,
-    created_at: new Date().toISOString()
-  },
-  {
-    id: 'scorpio-11',
-    name: 'Scorpio 11 7+1',
-    slug: 'scorpio-11-7-1',
-    brand: 'Mahindra',
     type: 'SUV',
     transmission: 'Manual',
     fuel_type: 'Diesel',
     seats: 8,
-    price_per_day: 3800,
-    images: ['/scorpio.png'],
-    features: ['Rugged Build', 'Excellent Suspension', '7+1 Seating', 'Powerful Engine'],
-    description: 'Adventure-ready SUV with high road presence and spacious seating.',
+    price_per_day: 5700,
+    images: ['/innova.png'],
+    features: ['Dual Zone AC', '7+1 / 8 Seating', 'Robust Suspension', 'Luggage Carrier'],
+    description: 'The standard of reliability and comfort for long distance group journeys.',
     is_available: true,
-    created_at: new Date().toISOString()
+    created_at: new Date().toISOString(),
+    price_per_km: 'Rs. 19/km | 20/km',
+    per_day_running: '300km',
+    toll_parking: 'Extra',
+    capacity: '6 + 1, 7 + 1',
+    car_type: 'AC/ Non-Ac'
   },
   {
-    id: 'tempo-17',
-    name: 'Tampo travel 17 seater',
-    slug: 'tempo-traveller-17-seater',
+    id: 'kia-carens',
+    name: 'Kia Carens',
+    slug: 'kia-carens',
+    brand: 'Kia',
+    type: 'SUV',
+    transmission: 'Manual',
+    fuel_type: 'Diesel',
+    seats: 8,
+    price_per_day: 4800,
+    images: ['/carens.png'],
+    features: ['Automatic Climate Control', 'Stylish Design', 'Premium Interiors', '6+1 / 7+1 Seating'],
+    description: 'Sleek and feature-packed modern family vehicle ensuring supreme comfort.',
+    is_available: true,
+    created_at: new Date().toISOString(),
+    price_per_km: 'Rs. 16/km | 17/km',
+    per_day_running: '300km',
+    toll_parking: 'Extra',
+    capacity: '6 + 1, 7 + 1',
+    car_type: 'AC/ Non-Ac'
+  },
+  {
+    id: 'toyota-innova-crysta',
+    name: 'Toyota Innova Crysta',
+    slug: 'toyota-innova-crysta',
+    brand: 'Toyota',
+    type: 'Luxury',
+    transmission: 'Manual',
+    fuel_type: 'Diesel',
+    seats: 5,
+    price_per_day: 5700,
+    images: ['/innova.png'],
+    features: ['Premium Captain Seats', 'Ultra-luxurious Cabin', 'Dual Zone Climate Control', '4+1 Seating'],
+    description: 'Chauffeur-driven premium luxury MPV offering unparalleled comfort and style.',
+    is_available: true,
+    created_at: new Date().toISOString(),
+    price_per_km: 'Rs. 19/km | 20/km',
+    per_day_running: '300km',
+    toll_parking: 'Extra',
+    capacity: '4 + 1',
+    car_type: 'AC/ Non-Ac'
+  },
+  {
+    id: 'mini-bus',
+    name: 'Mini Bus',
+    slug: 'mini-bus',
+    brand: 'Force',
+    type: 'Bus',
+    transmission: 'Manual',
+    fuel_type: 'Diesel',
+    seats: 7,
+    price_per_day: 7200,
+    images: ['/minibus.png'],
+    features: ['High Roof Cabin', 'AC/Non-AC options', '6+1 Seating Layout', 'Wide View Windows'],
+    description: 'Spacious and highly comfortable compact passenger coach for medium groups.',
+    is_available: true,
+    created_at: new Date().toISOString(),
+    price_per_km: 'Rs. 24/km | 28/km',
+    per_day_running: '300km',
+    toll_parking: 'Extra',
+    capacity: '6 + 1',
+    car_type: 'AC/ Non-Ac'
+  },
+  {
+    id: 'tempo-traveller',
+    name: 'Tempo Traveller',
+    slug: 'tempo-traveller',
     brand: 'Force Motors',
     type: 'Bus',
     transmission: 'Manual',
     fuel_type: 'Diesel',
     seats: 17,
-    price_per_day: 6500,
+    price_per_day: 7500,
     images: ['/tempo17.png'],
-    features: ['A/C', '17 Reclining Seats', 'Huge Luggage space', 'TV System'],
-    description: 'Highly popular and comfortable ride for large families, tours, and wedding groups.',
+    features: ['Fully Air Conditioned', 'Pushback Reclining Seats', 'LCD Screen & Music', 'Luggage Carrier'],
+    description: 'Perfect solution for family picnics, weddings, and group tour travels.',
     is_available: true,
-    created_at: new Date().toISOString()
-  },
-  {
-    id: 'tempo-32',
-    name: 'Tampo travel 32  seater',
-    slug: 'tempo-traveller-32-seater',
-    brand: 'Force Motors',
-    type: 'Bus',
-    transmission: 'Manual',
-    fuel_type: 'Diesel',
-    seats: 32,
-    price_per_day: 9500,
-    images: ['/tempo32.png'],
-    features: ['Fully Air Conditioned', '32 Comfortable Seats', 'Entertainment Screen', 'Heavy Luggage Support'],
-    description: 'Perfect solution for luxury corporate tours, conventions, and large group outings.',
-    is_available: true,
-    created_at: new Date().toISOString()
+    created_at: new Date().toISOString(),
+    price_per_km: 'Rs. 25/km | 28/km',
+    per_day_running: '300km',
+    toll_parking: 'Extra',
+    capacity: '6 + 1, 7 + 1',
+    car_type: 'AC/ Non-Ac'
   }
 ];
 
-export const SERVICES = [
+const SERVICES_RAW = [
   "Cab Hire Pune",
   "Corporate Cab Booking",
   "Out Station Car Rental",
@@ -128,6 +206,8 @@ export const SERVICES = [
   "Pune to Satara Cab",
   "Pune to Ellora Ajanta-Verul Taxi",
   "Pune to Ashtavinayak Cab",
+  "Pune to Prati Balaji Mandir Cab",
+  "Pune Swaminarayan Mandir Cab",
   "Pune to Trimbakeshwar Cab",
   "Pune to Shegaon cab",
   "Pune to Tuljapur Cab",
@@ -142,6 +222,7 @@ export const SERVICES = [
   "Pune to Nagpur cab",
   "Pune to Latur cab",
   "Pune to Harihareshwar Cab",
+  "Pune to Shrivardhan Cab",
   "Pune to Ganpatipule Cab",
   "Pune to Goa Cab",
   "Pune to Alibaug cab",
@@ -194,70 +275,52 @@ export const SERVICES = [
   "Pune Mumbai Cab Service"
 ];
 
-// Let's also create structured Tours for our major/popular packages so they can be viewed on detail pages
-export const TOURS: Tour[] = [
-  {
-    id: 'mahabaleshwar-weekend',
-    title: 'Mahabaleshwar Weekend Gateway',
-    slug: 'mahabaleshwar-weekend',
-    destination: 'Mahabaleshwar',
-    description: 'Experience the magic of Mahabaleshwar with our specially curated weekend package. From the panoramic views of Arthur Seat to the sweet taste of Mapro Garden strawberries, this tour covers the best of the hill station.',
-    price: 3500,
-    duration: '2 Days, 1 Night',
-    image: '/mahabaleshwar.png',
-    category: 'Hill Station',
-    included: ['Transportation', 'Hotel Stay', 'Sightseeing', 'Breakfast'],
-    itinerary: [
-      { day: 1, title: 'Arrival & Local Sightseeing', content: 'Arrive at Mahabaleshwar, check-in to your hotel. Visit Venna Lake, Old Mahabaleshwar Temple, and Arthur Seat.' },
-      { day: 2, title: 'Panchgani & Departure', content: 'Morning visit to Mapro Garden and Table Land in Panchgani. Late afternoon departure back to Pune.' }
-    ]
-  },
-  {
-    id: 'konkan-beach-paradise',
-    title: 'Konkan Beach Paradise',
-    slug: 'konkan-beach-paradise',
-    destination: 'Konkan',
-    description: 'Discover the pristine beaches and delicious seafood of Konkan. This tour takes you to the most serene coastal spots where the greenery meets the Arabian Sea.',
-    price: 5999,
-    duration: '3 Days, 2 Nights',
-    image: '/konkan.png',
-    category: 'Beach',
-    included: ['AC Transportation', 'Beachfront Resort', 'Sightseeing', 'Dinner'],
-    itinerary: [
-      { day: 1, title: 'Coastal Arrival', content: 'Travel to Konkan via the scenic Tamhini Ghat. Relax at the beach in the evening.' },
-      { day: 2, title: 'Water Sports & Forts', content: 'Visit Janjira Fort and enjoy water sports at the local beach.' },
-      { day: 3, title: 'Temple Visit & Return', content: 'Visit Ganpatipule Temple and head back to Pune with sweet memories.' }
-    ]
-  },
-  {
-    id: 'shirdi-spiritual-tour',
-    title: 'Spiritual Shirdi Tour',
-    slug: 'shirdi-spiritual-tour',
-    destination: 'Shirdi',
-    description: 'Embark on a sacred journey to the holy town of Shirdi, home to the revered saint Sai Baba. Find peace and seek blessings with a hassle-free round trip from Pune.',
-    price: 1500,
-    duration: '1 Day',
-    image: '/hero-bg.png',
-    category: 'Spiritual',
-    included: ['AC Cab Travel', 'Fuel and Toll charges', 'Sai Temple Darshan guidance', 'Driver allowance'],
-    itinerary: [
-      { day: 1, title: 'Travel & Darshan', content: 'Early morning pickup from Pune, travel to Shirdi. Enjoy VIP/normal darshan at the Sai Baba Temple, visit Dwarkamai and Chavadi. Return to Pune in the evening.' }
-    ]
-  },
-  {
-    id: 'lonavala-khandala-bliss',
-    title: 'Lonavala & Khandala Bliss',
-    slug: 'lonavala-khandala-bliss',
-    destination: 'Lonavala',
-    description: 'Take a break with a refreshing tour of Lonavala and Khandala. Enjoy beautiful valleys, pristine lakes, waterfalls, and delicious local chikki.',
-    price: 2999,
-    duration: '2 Days, 1 Night',
-    image: '/mahabaleshwar.png',
-    category: 'Hill Station',
-    included: ['AC Transportation', 'Hotel accommodation', 'Sightseeing tour', 'Breakfast'],
-    itinerary: [
-      { day: 1, title: 'Lonavala Lakes & Caves', content: 'Drive to Lonavala. Visit Bhushi Dam, Tiger Point, Karla Caves, and explore local markets.' },
-      { day: 2, title: 'Khandala Points & Departure', content: 'Visit Sunset Point, Rajmachi Garden, and Duke\'s Nose. Return to Pune in the evening.' }
-    ]
+export const SERVICES: Service[] = SERVICES_RAW.map(serviceName => {
+  if (serviceName === "Airport Taxi in Pune") {
+    return {
+      name: serviceName,
+      images: ["/pune-airport-1.jpg", "/pune-airport-2.jpg"],
+      description: "Reliable airport transfers between Pune city and Pune International Airport. Safe, clean, and punctual chauffeur-driven cabs."
+    };
   }
-];
+  if (serviceName === "Pune to Mumbai Cab" || serviceName === "Pune Mumbai Cab Service") {
+    return {
+      name: serviceName,
+      images: ["/marine-drive.jpg"],
+      description: "Premium one-way and round-trip cab services between Pune and Mumbai. Travel comfortably via Express Highway with experienced drivers."
+    };
+  }
+  if (serviceName === "Pune to Shrivardhan Cab") {
+    return {
+      name: serviceName,
+      images: ["/shrivardhan-1.jpg", "/shrivardhan-2.jpg", "/shrivardhan-3.jpg", "/shrivardhan-4.jpg", "/shrivardhan-5.jpg"],
+      description: "Safe and comfortable cab service from Pune to the pristine beaches of Shrivardhan. Clean cars, professional drivers, and smooth rides."
+    };
+  }
+  if (serviceName === "Pune to Alibaug cab") {
+    return {
+      name: serviceName,
+      images: ["/alibaug-1.jpg", "/alibaug-2.jpg", "/alibaug-3.jpg", "/alibaug-4.jpg"],
+      description: "Book premium chauffeur-driven cabs from Pune to Alibaug. Perfect for weekend beach getaways, fort exploration, and resort holidays."
+    };
+  }
+  if (serviceName === "Pune to Prati Balaji Mandir Cab") {
+    return {
+      name: serviceName,
+      images: ["/balaji-1.jpg", "/balaji-2.jpg", "/balaji-3.jpg"],
+      description: "Spiritual day-trip from Pune to the beautiful Prati Balaji Mandir in Ketkawale. Clean vehicles and hassle-free darshan travels."
+    };
+  }
+  if (serviceName === "Pune Swaminarayan Mandir Cab") {
+    return {
+      name: serviceName,
+      images: ["/swaminarayan-1.jpg", "/swaminarayan-2.jpg", "/swaminarayan-3.jpg"],
+      description: "Comfortable and hassle-free local sightseeing to the majestic BAPS Shri Swaminarayan Mandir in Pune. Perfect for family visits."
+    };
+  }
+  
+  return { name: serviceName };
+});
+
+// Let's also create structured Tours for our major/popular packages so they can be viewed on detail pages
+export const TOURS: Tour[] = [];
