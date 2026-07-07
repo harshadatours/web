@@ -13,7 +13,6 @@ const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Car Rental', href: '/cars' },
   { name: 'Tours & Services', href: '/tours' },
-  { name: 'About', href: '/about' },
   { name: 'Feedbacks', href: '/feedbacks' },
   { name: 'Contact', href: '/contact' },
 ]
@@ -22,6 +21,11 @@ export function Navbar() {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  // Do not render navbar on admin routes
+  if (pathname.startsWith('/admin')) {
+    return null;
+  }
 
   useEffect(() => {
     const handleScroll = () => {

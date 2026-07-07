@@ -1,0 +1,676 @@
+[
+  {
+    "id": "seed-0-cab-hire-pune",
+    "name": "Cab Hire Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-1-corporate-cab-booking",
+    "name": "Corporate Cab Booking",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-2-out-station-car-rental",
+    "name": "Out Station Car Rental",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-3-airport-taxi-in-pune",
+    "name": "Airport Taxi in Pune",
+    "description": "Reliable airport transfers between Pune city and Pune International Airport. Safe, clean, and punctual chauffeur-driven cabs.",
+    "images": [
+      "/pune-airport-1.jpg",
+      "/pune-airport-2.jpg"
+    ],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-4-pune-to-mumbai-cab",
+    "name": "Pune to Mumbai Cab",
+    "description": "Premium one-way and round-trip cab services between Pune and Mumbai. Travel comfortably via Express Highway with experienced drivers.",
+    "images": [
+      "/marine-drive.jpg"
+    ],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-5-pune-to-shirdi-cab",
+    "name": "Pune to Shirdi Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-6-pune-to-adlabs-imagica-cab",
+    "name": "Pune to Adlabs Imagica Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-7-pune-to-lonavla-cab",
+    "name": "Pune to Lonavla cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-8-pune-to-lavasa-cab",
+    "name": "Pune to Lavasa Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-9-pune-to-mahabaleshwar-cab",
+    "name": "Pune to Mahabaleshwar Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-10-pune-to-matheran-cab",
+    "name": "Pune to Matheran Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-11-pune-to-satara-cab",
+    "name": "Pune to Satara Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-12-pune-to-ellora-ajanta-verul-taxi",
+    "name": "Pune to Ellora Ajanta-Verul Taxi",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-13-pune-to-ashtavinayak-cab",
+    "name": "Pune to Ashtavinayak Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-14-pune-to-prati-balaji-mandir-cab",
+    "name": "Pune to Prati Balaji Mandir Cab",
+    "description": "Spiritual day-trip from Pune to the beautiful Prati Balaji Mandir in Ketkawale. Clean vehicles and hassle-free darshan travels.",
+    "images": [
+      "/balaji-1.jpg",
+      "/balaji-2.jpg",
+      "/balaji-3.jpg"
+    ],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-15-pune-swaminarayan-mandir-cab",
+    "name": "Pune Swaminarayan Mandir Cab",
+    "description": "Comfortable and hassle-free local sightseeing to the majestic BAPS Shri Swaminarayan Mandir in Pune. Perfect for family visits.",
+    "images": [
+      "/swaminarayan-1.jpg",
+      "/swaminarayan-2.jpg",
+      "/swaminarayan-3.jpg"
+    ],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-16-pune-to-trimbakeshwar-cab",
+    "name": "Pune to Trimbakeshwar Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-17-pune-to-shegaon-cab",
+    "name": "Pune to Shegaon cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-18-pune-to-tuljapur-cab",
+    "name": "Pune to Tuljapur Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-19-pune-to-pandharpur-cab",
+    "name": "Pune to Pandharpur Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-20-pach-jyotirlinga-darshan",
+    "name": "Pach Jyotirlinga Darshan",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-21-one-way-taxi-service",
+    "name": "One Way Taxi Service",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-22-pune-to-bhimashankar-cab",
+    "name": "Pune to Bhimashankar Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-23-pune-to-nashik-cab",
+    "name": "Pune to Nashik Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-24-pune-to-aurangabad-cab",
+    "name": "Pune to Aurangabad Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-25-pune-to-kolhapur-cab",
+    "name": "Pune to Kolhapur Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-26-pune-to-sangli-cab",
+    "name": "Pune to Sangli Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-27-pune-to-nagpur-cab",
+    "name": "Pune to Nagpur cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-28-pune-to-latur-cab",
+    "name": "Pune to Latur cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-29-pune-to-harihareshwar-cab",
+    "name": "Pune to Harihareshwar Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-30-pune-to-shrivardhan-cab",
+    "name": "Pune to Shrivardhan Cab",
+    "description": "Safe and comfortable cab service from Pune to the pristine beaches of Shrivardhan. Clean cars, professional drivers, and smooth rides.",
+    "images": [
+      "/shrivardhan-1.jpg",
+      "/shrivardhan-2.jpg",
+      "/shrivardhan-3.jpg",
+      "/shrivardhan-4.jpg",
+      "/shrivardhan-5.jpg"
+    ],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-31-pune-to-ganpatipule-cab",
+    "name": "Pune to Ganpatipule Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-32-pune-to-goa-cab",
+    "name": "Pune to Goa Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-33-pune-to-alibaug-cab",
+    "name": "Pune to Alibaug cab",
+    "description": "Book premium chauffeur-driven cabs from Pune to Alibaug. Perfect for weekend beach getaways, fort exploration, and resort holidays.",
+    "images": [
+      "/alibaug-1.jpg",
+      "/alibaug-2.jpg",
+      "/alibaug-3.jpg",
+      "/alibaug-4.jpg"
+    ],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-34-pune-to-murud-janjira-cab",
+    "name": "Pune to Murud Janjira Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-35-pune-to-ratnagiri-cab",
+    "name": "Pune to Ratnagiri Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-36-pune-to-raigad-cab",
+    "name": "Pune to Raigad Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-37-pune-to-tarkarli-cab",
+    "name": "Pune to Tarkarli Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-38-pune-to-dapoli-cab-service",
+    "name": "Pune to Dapoli Cab Service",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-39-cab-booking-faqs",
+    "name": "Cab Booking FAQs",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-40-terms-and-condition",
+    "name": "Terms And Condition",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-41-privacy-policy",
+    "name": "Privacy Policy",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-42-round-trip-cab-booking-pune",
+    "name": "Round Trip Cab Booking Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-43-blog",
+    "name": "Blog",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-44-online-cab-service-pune",
+    "name": "Online Cab Service Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-45-7-seater-cabs-on-rent-in-pune",
+    "name": "7 Seater Cabs on Rent in Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-46-cab-service-in-pune",
+    "name": "Cab Service in Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-47-car-hire-in-pune",
+    "name": "Car Hire in Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-48-car-provider-in-pune",
+    "name": "Car Provider In Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-49-innova-on-rent-pune",
+    "name": "Innova on Rent Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-50-mini-bus-hire-in-pune",
+    "name": "Mini Bus Hire in Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-51-new-ertiga-on-rent-in-pune",
+    "name": "New Ertiga on Rent in Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-52-pune-to-navi-mumbai-cab",
+    "name": "Pune to Navi Mumbai Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-53-sedan-car-for-rent-in-pune",
+    "name": "Sedan Car for Rent in Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-54-swift-dzire-on-rent-in-pune",
+    "name": "Swift Dzire on Rent in Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-55-tempo-traveller-on-rent-pune",
+    "name": "Tempo Traveller On Rent Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-56-wedding-car-rental-pune",
+    "name": "Wedding Car Rental Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-57-innova-crysta-for-outstation-in-pune",
+    "name": "Innova Crysta for Outstation in Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-58-kia-carens-cabs-on-rent-in-pune",
+    "name": "Kia Carens Cabs on Rent in Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-59-pune-airport-to-outstation-cab-fare",
+    "name": "Pune Airport to Outstation Cab Fare",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-60-pune-to-mumbai-international-airport-cab",
+    "name": "Pune to Mumbai International Airport Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-61-pune-to-thane-cab",
+    "name": "Pune to Thane Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-62-pune-to-panvel-cab",
+    "name": "Pune to Panvel Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-63-pune-to-konkan-darshan-cab",
+    "name": "Pune to Konkan Darshan Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-64-pune-to-indore-cab",
+    "name": "Pune to Indore Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-65-pune-to-gujarat-cabs",
+    "name": "Pune to Gujarat Cabs",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-66-pune-to-bangalore-cab",
+    "name": "Pune to Bangalore cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-67-pune-to-ayodhya-cab",
+    "name": "Pune to Ayodhya cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-68-pune-to-akkalkot-cab",
+    "name": "Pune to Akkalkot cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-69-pune-airport-to-shirdi-cab",
+    "name": "Pune Airport to Shirdi cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-70-car-hire-for-outstation-tours-in-pune",
+    "name": "Car Hire for Outstation Tours in Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-71-pune-to-panchgani-cab",
+    "name": "Pune to Panchgani Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-72-pune-to-jejuri-cab",
+    "name": "Pune to Jejuri Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-73-innova-crysta-on-rent-in-pune",
+    "name": "Innova Crysta On Rent in Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-74-pune-to-ahmednagar-cab",
+    "name": "Pune to Ahmednagar Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-75-mumbai-airport-to-pune-cab",
+    "name": "Mumbai Airport to Pune Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-76-maruti-ertiga-on-rent-in-pune",
+    "name": "Maruti Ertiga On Rent in Pune",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-77-pune-airport-to-mahabaleshwar-cab",
+    "name": "Pune Airport to Mahabaleshwar Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-78-pune-railway-station-to-mahabaleshwar-taxi-fare",
+    "name": "Pune Railway Station to Mahabaleshwar Taxi fare",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-79-pune-to-devkund-waterfall-cab",
+    "name": "Pune to Devkund Waterfall Cab",
+    "description": "",
+    "images": [],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  },
+  {
+    "id": "seed-80-pune-mumbai-cab-service",
+    "name": "Pune Mumbai Cab Service",
+    "description": "Premium one-way and round-trip cab services between Pune and Mumbai. Travel comfortably via Express Highway with experienced drivers.",
+    "images": [
+      "/marine-drive.jpg"
+    ],
+    "visible": true,
+    "createdAt": "2026-07-07T12:28:16.247Z"
+  }
+]
