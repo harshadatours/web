@@ -14,6 +14,7 @@ const navLinks = [
   { name: 'Car Rental', href: '/cars' },
   { name: 'Tours & Services', href: '/tours' },
   { name: 'About', href: '/about' },
+  { name: 'Feedbacks', href: '/feedbacks' },
   { name: 'Contact', href: '/contact' },
 ]
 
