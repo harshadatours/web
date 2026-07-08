@@ -116,9 +116,7 @@ export default function CreateServicePage() {
             <div className="space-y-2">
               <label htmlFor="name" className="text-sm font-semibold text-gray-700">Service / Route Name *</label>
               <input
-                id="name" type="text" required
-                value={name}
-                onChange={e => setName(e.target.value)}
+                id="name" name="name" type="text" required
                 placeholder="e.g. Pune to Mumbai Cab"
                 className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all shadow-sm"
               />
@@ -127,9 +125,7 @@ export default function CreateServicePage() {
             <div className="space-y-2">
               <label htmlFor="description" className="text-sm font-semibold text-gray-700">Description</label>
               <textarea
-                id="description" rows={3}
-                value={description}
-                onChange={e => setDescription(e.target.value)}
+                id="description" name="description" rows={3}
                 placeholder="Brief description of this service..."
                 className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all shadow-sm resize-none"
               />
