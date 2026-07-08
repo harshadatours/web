@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { getServicesSync, createService } from '@/lib/services';
+import { getServices, createService } from '@/lib/services';
 
 export async function GET() {
-  const services = getServicesSync();
+  const services = await getServices();
   return NextResponse.json(services);
 }
 

@@ -1,11 +1,14 @@
 import { Hero } from "@/components/home/hero";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { SERVICES } from "@/lib/data";
+import { getServices } from "@/lib/services";
 import { MessageCircle, Navigation } from "lucide-react";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 
-export default function Home() {
+export default async function Home() {
+  const allServices = await getServices();
+  const visibleServices = allServices.filter(s => s.visible && s.images && s.images.length > 0);
+
   return (
     <div className="flex flex-col gap-20 pb-20">
       <Hero />
@@ -72,7 +75,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
-          {SERVICES.filter(service => service.images && service.images.length > 0).map((service, index) => {
+          {visibleServices.map((service, index) => {
             const whatsappUrl = getWhatsAppUrl(
               '919172936138',
               `Hello Harshada Tours and Travels,\n\nI would like to inquire about/book the service: *${service.name}*.\n\nPlease provide me with details on rates, vehicle options, and availability.`
