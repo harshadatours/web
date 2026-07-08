@@ -3,8 +3,9 @@
 import { useState, useRef, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { UploadCloud, X, Plus, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { UploadCloud, X, Plus, AlertCircle, CheckCircle2, Image as ImageIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { compressImage } from '@/lib/imageCompression';
 
 interface ExistingImage {
   url: string;
@@ -74,7 +75,10 @@ export default function EditServicePage({ params }: { params: Promise<{ id: stri
     let newUrls: string[] = [];
     if (newImages.length > 0) {
       const uploadData = new FormData();
-      newImages.forEach(img => uploadData.append('files', img.file));
+      for (const img of newImages) {
+        const compressed = await compressImage(img.file);
+        uploadData.append('files', compressed);
+      }
       try {
         const res = await fetch('/api/upload', { method: 'POST', body: uploadData });
         if (!res.ok) throw new Error('Upload failed');

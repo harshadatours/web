@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { UploadCloud, X, Plus, AlertCircle, CheckCircle2, Image as ImageIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { compressImage } from '@/lib/imageCompression';
 
 interface UploadedImage {
   url: string;
@@ -61,7 +62,12 @@ export default function CreateServicePage() {
     const filesToUpload = images.filter(img => img.file);
     if (filesToUpload.length > 0) {
       const uploadData = new FormData();
-      filesToUpload.forEach(img => uploadData.append('files', img.file!));
+      for (const img of filesToUpload) {
+        if (img.file) {
+          const compressed = await compressImage(img.file);
+          uploadData.append('files', compressed);
+        }
+      }
       try {
         const res = await fetch('/api/upload', { method: 'POST', body: uploadData });
         if (!res.ok) throw new Error('Upload failed');

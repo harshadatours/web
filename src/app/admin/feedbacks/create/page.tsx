@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { createFeedbackRecord } from '@/actions/feedbacks';
 import { UploadCloud, CheckCircle2, AlertCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { compressImage } from '@/lib/imageCompression';
 
 export default function CreateFeedbackPage() {
   const [loading, setLoading] = useState(false);
@@ -38,7 +39,14 @@ export default function CreateFeedbackPage() {
 
     if (validFiles.length > 0) {
       const uploadData = new FormData();
-      validFiles.forEach(f => uploadData.append('files', f));
+      for (const f of validFiles) {
+        if (f.type.startsWith('image/')) {
+          const compressed = await compressImage(f);
+          uploadData.append('files', compressed);
+        } else {
+          uploadData.append('files', f);
+        }
+      }
       
       try {
         const res = await fetch('/api/upload', {
