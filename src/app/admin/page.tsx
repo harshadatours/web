@@ -80,10 +80,7 @@ export default async function AdminDashboard() {
                       year: 'numeric', month: 'short', day: 'numeric'
                     })}
                   </span>
-                  <form action={async () => {
-                    'use server';
-                    await removeFeedback(f.id);
-                  }}>
+                  <form action={removeFeedback.bind(null, f.id)}>
                     <button 
                       type="submit" 
                       className="text-gray-400 hover:text-red-600 hover:bg-red-50 p-2 rounded-lg transition-colors flex items-center justify-center"

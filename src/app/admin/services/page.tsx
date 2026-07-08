@@ -73,10 +73,7 @@ export default async function AdminServicesPage() {
             {/* Actions */}
             <div className="flex items-center gap-1 shrink-0">
               {/* Toggle visibility */}
-              <form action={async () => {
-                'use server';
-                await toggleVisibilityAction(service.id);
-              }}>
+              <form action={toggleVisibilityAction.bind(null, service.id)}>
                 <button
                   type="submit"
                   title={service.visible ? 'Hide from website' : 'Show on website'}
@@ -100,10 +97,7 @@ export default async function AdminServicesPage() {
               </Link>
 
               {/* Delete */}
-              <form action={async () => {
-                'use server';
-                await deleteServiceAction(service.id);
-              }}>
+              <form action={deleteServiceAction.bind(null, service.id)}>
                 <button
                   type="submit"
                   title="Delete service"
