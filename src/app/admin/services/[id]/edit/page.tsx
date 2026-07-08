@@ -95,7 +95,7 @@ export default function EditServicePage({ params }: { params: Promise<{ id: stri
     });
 
     try {
-      const res = await fetch(`/api/admin/services/${params.id}`, {
+      const res = await fetch(`/api/admin/services/${id}`, {
         method: 'PATCH',
         body: JSON.stringify({ name, description, images: finalUrls }),
         headers: { 'Content-Type': 'application/json' },
