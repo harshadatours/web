@@ -16,8 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://harshadatourstravels.com'),
   title: "Harshada Tours and Travels | Premium Travel & Car Rental",
   description: "Book luxury car rentals and curated tour packages in Pune, Maharashtra. Harshada Tours and Travels offers the best travel experiences across India.",
+  alternates: {
+    canonical: '/',
+  }
 };
 
 export default function RootLayout({
