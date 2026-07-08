@@ -1,5 +1,4 @@
-import fs from 'fs';
-import path from 'path';
+import { supabase } from './supabase';
 
 export interface Feedback {
   id: string;
@@ -9,26 +8,39 @@ export interface Feedback {
   mediaUrls: string[]; // URLs to photos or videos
 }
 
-const dataFilePath = path.join(process.cwd(), 'data', 'feedbacks.json');
-
 export async function getFeedbacks(): Promise<Feedback[]> {
   try {
-    if (!fs.existsSync(dataFilePath)) {
-      return [];
-    }
-    const data = fs.readFileSync(dataFilePath, 'utf8');
-    return JSON.parse(data) as Feedback[];
+    const { data, error } = await supabase
+      .from('feedbacks')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+    
+    return data.map(item => ({
+      ...item,
+      mediaUrls: item.media_urls,
+      createdAt: item.created_at
+    })) as Feedback[];
   } catch (error) {
-    console.error('Error reading feedbacks:', error);
+    console.error('Error fetching feedbacks:', error);
     return [];
   }
 }
 
 export async function saveFeedback(feedback: Feedback): Promise<void> {
   try {
-    const feedbacks = await getFeedbacks();
-    feedbacks.unshift(feedback); // Add to the beginning
-    fs.writeFileSync(dataFilePath, JSON.stringify(feedbacks, null, 2));
+    const { id, name, content, mediaUrls, createdAt } = feedback;
+    
+    const { error } = await supabase.from('feedbacks').insert([{
+      id,
+      name,
+      content,
+      media_urls: mediaUrls,
+      created_at: createdAt
+    }]);
+
+    if (error) throw error;
   } catch (error) {
     console.error('Error saving feedback:', error);
     throw new Error('Failed to save feedback');
@@ -37,11 +49,15 @@ export async function saveFeedback(feedback: Feedback): Promise<void> {
 
 export async function deleteFeedback(id: string): Promise<void> {
   try {
-    const feedbacks = await getFeedbacks();
-    const updated = feedbacks.filter((f) => f.id !== id);
-    fs.writeFileSync(dataFilePath, JSON.stringify(updated, null, 2));
+    const { error } = await supabase
+      .from('feedbacks')
+      .delete()
+      .eq('id', id);
+
+    if (error) throw error;
   } catch (error) {
     console.error('Error deleting feedback:', error);
     throw new Error('Failed to delete feedback');
   }
 }
+

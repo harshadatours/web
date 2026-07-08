@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { supabase } from '@/lib/supabase';
 import { nanoid } from 'nanoid';
+import path from 'path';
 
 export async function POST(request: Request) {
   try {
@@ -15,26 +15,31 @@ export async function POST(request: Request) {
       );
     }
 
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'feedbacks');
-    
-    // Ensure directory exists
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-
     const uploadedUrls: string[] = [];
 
     for (const file of files) {
       const buffer = Buffer.from(await file.arrayBuffer());
-      // Generate a unique name to prevent collisions
       const ext = path.extname(file.name);
       const uniqueName = `${nanoid()}${ext}`;
-      const filePath = path.join(uploadDir, uniqueName);
       
-      fs.writeFileSync(filePath, buffer);
-      
-      // Store the public URL
-      uploadedUrls.push(`/uploads/feedbacks/${uniqueName}`);
+      const { data, error } = await supabase.storage
+        .from('uploads')
+        .upload(`feedbacks/${uniqueName}`, buffer, {
+          contentType: file.type,
+          cacheControl: '3600',
+          upsert: false
+        });
+
+      if (error) {
+        console.error('Supabase upload error:', error);
+        throw error;
+      }
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('uploads')
+        .getPublicUrl(`feedbacks/${uniqueName}`);
+
+      uploadedUrls.push(publicUrl);
     }
 
     return NextResponse.json({ urls: uploadedUrls }, { status: 200 });
@@ -46,3 +51,4 @@ export async function POST(request: Request) {
     );
   }
 }
+
