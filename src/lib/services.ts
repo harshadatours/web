@@ -92,6 +92,20 @@ export async function updateService(id: string, updates: Partial<Omit<ManagedSer
 }
 
 export async function deleteService(id: string): Promise<void> {
+  const service = await getServiceById(id);
+  
+  if (service && service.images && service.images.length > 0) {
+    const pathsToRemove = service.images.map(url => {
+      const parts = url.split('/uploads/');
+      return parts.length > 1 ? parts[1] : null;
+    }).filter(Boolean) as string[];
+    
+    if (pathsToRemove.length > 0) {
+      const { error } = await supabase.storage.from('uploads').remove(pathsToRemove);
+      if (error) console.error('Error deleting service images:', error);
+    }
+  }
+
   const { error } = await supabase
     .from('services')
     .delete()

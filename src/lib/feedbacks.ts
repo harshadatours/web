@@ -49,6 +49,27 @@ export async function saveFeedback(feedback: Feedback): Promise<void> {
 
 export async function deleteFeedback(id: string): Promise<void> {
   try {
+    // Fetch the feedback first to get its media URLs
+    const { data: feedback } = await supabase
+      .from('feedbacks')
+      .select('media_urls')
+      .eq('id', id)
+      .single();
+
+    if (feedback && feedback.media_urls && feedback.media_urls.length > 0) {
+      const pathsToRemove = feedback.media_urls.map((url: string) => {
+        const parts = url.split('/uploads/');
+        return parts.length > 1 ? parts[1] : null;
+      }).filter(Boolean) as string[];
+      
+      if (pathsToRemove.length > 0) {
+        const { error: storageError } = await supabase.storage
+          .from('uploads')
+          .remove(pathsToRemove);
+        if (storageError) console.error('Error deleting feedback images:', storageError);
+      }
+    }
+
     const { error } = await supabase
       .from('feedbacks')
       .delete()
