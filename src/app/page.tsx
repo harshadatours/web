@@ -7,7 +7,17 @@ import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 export default async function Home() {
   const allServices = await getServices();
-  const visibleServices = allServices.filter(s => s.visible && s.images && s.images.length > 0);
+  const visibleServices = allServices.filter(s => s.visible);
+  
+  // Sort so services with custom images appear first
+  const sortedServices = [...visibleServices].sort((a, b) => {
+    const aHas = a.images && a.images.length > 0 ? 1 : 0;
+    const bHas = b.images && b.images.length > 0 ? 1 : 0;
+    return bHas - aHas;
+  });
+
+  // Display top featured services on home page
+  const featuredServices = sortedServices.slice(0, 18);
 
   return (
     <div className="flex flex-col gap-20 pb-20">
@@ -74,8 +84,8 @@ export default async function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
-          {visibleServices.map((service, index) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+          {featuredServices.map((service, index) => {
             const whatsappUrl = getWhatsAppUrl(
               '919172936138',
               `Hello Harshada Tours and Travels,\n\nI would like to inquire about/book the service: *${service.name}*.\n\nPlease provide me with details on rates, vehicle options, and availability.`
@@ -89,9 +99,9 @@ export default async function Home() {
                 {/* Top line gradient */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-orange-400 z-10" />
                 
-                {/* Cover Image */}
-                {service.images && service.images.length > 0 && (
-                  <div className="relative h-48 w-full overflow-hidden">
+                {/* Cover Image or Fallback Header */}
+                {service.images && service.images.length > 0 ? (
+                  <div className="relative h-44 w-full overflow-hidden">
                     <Image 
                       src={service.images[0]} 
                       alt={service.name}
@@ -100,30 +110,39 @@ export default async function Home() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent" />
                     
-                    {/* Category / Icon indicator */}
-                    <div className="absolute bottom-4 left-4 flex items-center gap-2 glass px-3 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-wider">
+                    <div className="absolute bottom-3 left-3 flex items-center gap-1.5 glass px-2.5 py-0.5 rounded-full text-[10px] font-bold text-white uppercase tracking-wider">
                       <Navigation className="w-3 h-3 text-primary animate-pulse" />
                       Trip Route
                     </div>
                   </div>
+                ) : (
+                  <div className="relative h-32 w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 p-4 flex flex-col justify-between border-b border-white/10 group-hover:from-slate-800 group-hover:to-slate-900 transition-colors">
+                    <div className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary border border-primary/30 group-hover:scale-110 transition-transform">
+                      <Navigation className="w-4 h-4" />
+                    </div>
+                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-primary uppercase tracking-wider">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-ping" />
+                      Popular Route
+                    </div>
+                  </div>
                 )}
 
-                <div className="p-6 flex flex-col flex-1 justify-between">
-                  <div className="mb-6">
-                    <h3 className="font-bold text-white text-lg mb-2 leading-snug group-hover:text-primary transition-colors">
+                <div className="p-5 flex flex-col flex-1 justify-between">
+                  <div className="mb-4">
+                    <h3 className="font-bold text-white text-base mb-2 leading-snug group-hover:text-primary transition-colors line-clamp-2">
                       {service.name}
                     </h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed min-h-[3rem]">
+                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
                       {service.description || "Premium outstation cabs and verified drivers for a comfortable ride."}
                     </p>
                   </div>
                   
                   <Button 
                     asChild
-                    className="w-full h-12 rounded-2xl text-sm font-semibold gap-2 shadow-xl shadow-primary/20 hover:scale-105 transition-transform"
+                    className="w-full h-11 rounded-2xl text-xs font-semibold gap-2 shadow-xl shadow-primary/20 hover:scale-105 transition-transform"
                   >
                     <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                      <MessageCircle className="w-4 h-4 shrink-0" />
+                      <MessageCircle className="w-3.5 h-3.5 shrink-0" />
                       Book Cab Now
                     </a>
                   </Button>
@@ -135,7 +154,7 @@ export default async function Home() {
 
         <div className="text-center mt-12">
           <Button asChild variant="outline" size="lg" className="rounded-2xl border-white/10 hover:bg-white/5 px-8">
-            <a href="/tours">View All Outstation Routes</a>
+            <a href="/tours">View All Outstation Routes ({visibleServices.length})</a>
           </Button>
         </div>
       </section>
