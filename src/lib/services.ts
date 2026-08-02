@@ -52,10 +52,20 @@ async function fetchServicesFromSupabase(): Promise<ManagedService[]> {
       return await seedIfEmpty();
     }
 
-    return data.map(item => ({
-      ...item,
-      createdAt: item.created_at || new Date().toISOString()
-    })) as ManagedService[];
+    return data.map(item => {
+      const fallback = STATIC_FALLBACK_SERVICES.find(s => s.name.toLowerCase() === item.name?.toLowerCase() || s.id === item.id);
+      const images = (item.images && Array.isArray(item.images) && item.images.length > 0) 
+        ? item.images 
+        : (fallback?.images && fallback.images.length > 0 ? fallback.images : ["/fortuner.png"]);
+      const description = item.description || fallback?.description || "Premium outstation cab and chauffeur services in Pune.";
+
+      return {
+        ...item,
+        images,
+        description,
+        createdAt: item.created_at || new Date().toISOString()
+      };
+    }) as ManagedService[];
   } catch (error) {
     console.error('Error fetching services from Supabase:', error);
     return STATIC_FALLBACK_SERVICES;
@@ -64,7 +74,7 @@ async function fetchServicesFromSupabase(): Promise<ManagedService[]> {
 
 export const getServices = unstable_cache(
   fetchServicesFromSupabase,
-  ['services-list-v1'],
+  ['services-list-v4'],
   { revalidate: 60, tags: ['services'] }
 );
 

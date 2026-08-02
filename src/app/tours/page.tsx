@@ -10,36 +10,33 @@ import type { ManagedService } from '@/lib/services'
 
 function ServiceCard({ service, handleServiceWhatsApp }: { service: ManagedService, handleServiceWhatsApp: (name: string) => void }) {
   const [activeImgIdx, setActiveImgIdx] = useState(0)
+  const coverImg = service.images && service.images.length > 0 ? service.images[activeImgIdx] : "/fortuner.png"
 
   return (
     <div className="glass rounded-3xl border-white/15 flex flex-col justify-between hover:scale-[1.03] hover:bg-white/5 transition-all duration-300 relative group overflow-hidden shadow-lg animate-in fade-in duration-300">
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-orange-400 z-10" />
 
-      {service.images && service.images.length > 0 ? (
-        <div className="relative h-48 w-full overflow-hidden">
-          <Image
-            src={service.images[activeImgIdx]}
-            alt={service.name}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-          {service.images.length > 1 && (
-            <span className="absolute top-4 right-4 glass px-3 py-1 rounded-full text-[10px] font-bold text-white z-10 flex items-center gap-1 shadow-lg border-white/20">
-              📸 {service.images.length} Photos
-            </span>
-          )}
-        </div>
-      ) : null}
+      <div className="relative h-48 w-full overflow-hidden">
+        <Image
+          src={coverImg}
+          alt={service.name}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent" />
+        {service.images && service.images.length > 1 ? (
+          <span className="absolute top-4 right-4 glass px-3 py-1 rounded-full text-[10px] font-bold text-white z-10 flex items-center gap-1 shadow-lg border-white/20">
+            📸 {service.images.length} Photos
+          </span>
+        ) : (
+          <span className="absolute top-4 right-4 glass px-2.5 py-0.5 rounded-full text-[10px] font-bold text-primary z-10 flex items-center gap-1 border-white/10 uppercase tracking-wider">
+            Popular Route
+          </span>
+        )}
+      </div>
 
       <div className="p-6 flex flex-col flex-1 justify-between">
         <div className="mb-6">
-          {(!service.images || service.images.length === 0) && (
-            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
-              <Navigation2 className="w-5 h-5" />
-            </div>
-          )}
-
           <h3 className="font-bold text-white text-lg mb-2 leading-snug group-hover:text-primary transition-colors">{service.name}</h3>
           <p className="text-xs text-muted-foreground leading-relaxed">
             {service.description || "Premium Fleet & Chauffeur Services Available"}
