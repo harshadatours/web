@@ -57,26 +57,26 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Premium <span className="text-primary italic">Car Rentals</span> <br />
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+            Premium <span className="text-primary italic">Car Rentals</span> <br className="hidden sm:inline" />
             for Your Every Journey
           </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto font-light">
+          <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 sm:mb-12 max-w-2xl mx-auto font-light leading-relaxed">
             Luxury car rentals and professional chauffeur services from Pune to across Maharashtra. Experience comfort, safety, and reliability.
           </p>
 
-          <form onSubmit={handleSearch} className="max-w-2xl mx-auto relative glass p-2 md:p-3 rounded-full flex flex-col sm:flex-row items-center gap-2 md:gap-4 border-white/30 shadow-2xl">
-            <div className="flex-1 w-full relative flex items-center pl-4">
+          <form onSubmit={handleSearch} className="max-w-2xl mx-auto relative glass p-2.5 sm:p-3 rounded-[2rem] sm:rounded-full flex flex-col sm:flex-row items-center gap-2 md:gap-4 border-white/30 shadow-2xl">
+            <div className="flex-1 w-full relative flex items-center pl-3 sm:pl-4">
               <Search className="w-5 h-5 text-primary shrink-0" />
               <input 
                 type="text"
                 placeholder="Where do you want to travel? (e.g. Mahabaleshwar)"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-transparent border-none focus:ring-0 text-white placeholder:text-white/60 px-4 py-3 outline-none"
+                className="w-full bg-transparent border-none focus:ring-0 text-white placeholder:text-white/60 px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base outline-none"
               />
             </div>
-            <Button type="submit" size="lg" className="w-full sm:w-auto h-12 md:h-14 rounded-full px-8 text-base font-bold shadow-xl shadow-primary/20">
+            <Button type="submit" size="lg" className="w-full sm:w-auto h-12 md:h-14 rounded-2xl sm:rounded-full px-8 text-sm sm:text-base font-bold shadow-xl shadow-primary/20">
               Search & Book
             </Button>
           </form>

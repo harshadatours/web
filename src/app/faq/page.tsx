@@ -6,8 +6,8 @@ import { ChevronDown, HelpCircle } from 'lucide-react'
 
 const FAQS = [
   {
-    question: "What types of cars do you have for rent?",
-    answer: "We offer a curated fleet of well-maintained vehicles including New Dizire 4+1, New Ertiga 6+1, Innova Crysta 6+1, Scorpio 11 (7+1), Tampo Travel 17 seater, and Tampo Travel 32 seater."
+    question: "What types of cars and rates do you offer?",
+    answer: "We offer a wide range of well-maintained vehicles with transparent per-kilometer rates: Sedan (Swift Dzire / Etios) at Rs. 12/km, Suzuki Ertiga at Rs. 15/km, Mahindra Scorpio at Rs. 17/km, Toyota Innova at Rs. 18/km, Toyota Innova Crysta at Rs. 20/km, and Tempo Traveller (17/32 Seater) at Rs. 24/km (Non-AC) & Rs. 28/km (AC)."
   },
   {
     question: "Do you provide drivers with car rentals?",

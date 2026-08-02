@@ -24,67 +24,68 @@ export default async function Home() {
       <Hero />
       
       {/* Car Rental Promo Section */}
-      <section className="bg-slate-950 py-24 text-white overflow-hidden relative">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="bg-slate-950 py-16 sm:py-24 text-white overflow-hidden relative">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 sm:mb-8 leading-tight">
                 Premium <span className="text-primary">Car Rental</span> Service in Pune
               </h2>
-              <p className="text-xl text-white/70 mb-10 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-white/70 mb-8 sm:mb-10 leading-relaxed font-light">
                 Experience luxury and comfort with our wide range of well-maintained vehicles. From SUVs for family trips to premium sedans for business.
               </p>
-              <ul className="grid grid-cols-2 gap-4 mb-12">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 mb-8 sm:mb-12">
                 {['Professional Drivers', '24/7 Support', 'Clean & Sanitized Cars', 'Transparent Pricing', 'Easy WhatsApp Booking', 'Flexible Rentals'].map((item) => (
                   <li key={item} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold shrink-0">
                       ✓
                     </div>
-                    <span className="text-sm md:text-base">{item}</span>
+                    <span className="text-xs sm:text-sm md:text-base text-white/90">{item}</span>
                   </li>
                 ))}
               </ul>
-              <div className="flex flex-wrap gap-4">
-                <Button asChild size="lg" className="h-16 px-10 rounded-2xl text-lg font-bold shadow-xl shadow-primary/20">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3.5 sm:gap-4">
+                <Button asChild size="lg" className="h-14 sm:h-16 px-8 sm:px-10 rounded-2xl text-base sm:text-lg font-bold shadow-xl shadow-primary/20">
                   <a href="/cars">Explore Fleet</a>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-lg font-bold border-white/10 hover:bg-white/5">
+                <Button asChild variant="outline" size="lg" className="h-14 sm:h-16 px-8 sm:px-10 rounded-2xl text-base sm:text-lg font-bold border-white/10 hover:bg-white/5">
                   <a href="https://wa.me/919172936138" target="_blank" rel="noopener noreferrer">Inquire Pricing</a>
                 </Button>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative mt-6 lg:mt-0">
               {/* Floating Glass Cards for Cars */}
-              <div className="relative z-10 grid grid-cols-1 gap-6 translate-x-0 lg:translate-x-12 rotate-0 lg:-rotate-6">
-                <div className="glass-dark border-white/10 p-4 rounded-[2.5rem] shadow-2xl scale-100 lg:scale-110">
-                  <div className="relative h-64 rounded-[2rem] overflow-hidden mb-4">
-                    <Image src="/fortuner.png" alt="Luxury Car" fill className="object-cover" />
+              <div className="relative z-10 grid grid-cols-1 gap-6 translate-x-0 lg:translate-x-6 rotate-0 lg:-rotate-3">
+                <div className="glass-dark border-white/10 p-3.5 sm:p-4 rounded-3xl sm:rounded-[2.5rem] shadow-2xl scale-100">
+                  <div className="relative h-52 sm:h-64 rounded-2xl sm:rounded-[2rem] overflow-hidden mb-4">
+                    <Image src="/fortuner.png" alt="Luxury Car" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
                   </div>
-                  <div className="flex justify-between items-center px-4 pb-2">
-                    <span className="font-bold text-xl">Toyota Innova Crysta</span>
+                  <div className="flex justify-between items-center px-2 sm:px-4 pb-2">
+                    <span className="font-bold text-lg sm:text-xl">Toyota Innova Crysta</span>
+                    <span className="text-xs font-bold text-primary glass px-3 py-1 rounded-full">Rs. 20/km</span>
                   </div>
                 </div>
               </div>
               
               {/* Background Glow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/20 blur-[100px] rounded-full" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-primary/20 blur-[100px] rounded-full" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Popular Cab Services & Trips Section */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+      <section className="container mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
             Popular <span className="text-primary italic">Cab Services & Trips</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
             Book premium airport transfers and outstation cabs from Pune to top destinations. Reliable rides, verified drivers, and transparent pricing.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-4 sm:gap-6">
           {featuredServices.map((service, index) => {
             const whatsappUrl = getWhatsAppUrl(
               '919172936138',
