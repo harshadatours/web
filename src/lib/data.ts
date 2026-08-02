@@ -190,25 +190,88 @@ export const CARS: Car[] = [
     car_type: 'Non-AC (Rs. 24/km) / AC (Rs. 28/km)'
   },
   {
-    id: 'mini-bus',
-    name: 'Mini Bus',
-    slug: 'mini-bus',
-    brand: 'Force',
+    id: 'honda-city',
+    name: 'Honda City',
+    slug: 'honda-city',
+    brand: 'Honda',
+    type: 'Sedan',
+    transmission: 'Manual',
+    fuel_type: 'Petrol',
+    seats: 5,
+    price_per_day: 4200,
+    images: ['/honda-city.png'],
+    features: ['Automatic Climate Control', 'Leatherette Upholstery', '4+1 Seating', 'Smooth Highway Cruiser'],
+    description: 'Executive luxury sedan offering unmatched comfort, quiet cabin, and premium travel experience.',
+    is_available: true,
+    created_at: new Date().toISOString(),
+    price_per_km: 'Rs. 14/km',
+    per_day_running: '300km',
+    toll_parking: 'Extra',
+    capacity: '4 + 1',
+    car_type: 'AC'
+  },
+  {
+    id: 'maruti-wagonr',
+    name: 'Maruti WagonR',
+    slug: 'maruti-wagonr',
+    brand: 'Maruti Suzuki',
+    type: 'Hatchback',
+    transmission: 'Manual',
+    fuel_type: 'CNG',
+    seats: 4,
+    price_per_day: 2800,
+    images: ['/wagonr.png'],
+    features: ['Air Conditioning', 'Tall Boy Design', 'Economical Travel', '3+1 Seating'],
+    description: 'Best budget-friendly compact hatchback for quick local city travel and short errands.',
+    is_available: true,
+    created_at: new Date().toISOString(),
+    price_per_km: 'Rs. 10/km',
+    per_day_running: '300km',
+    toll_parking: 'Extra',
+    capacity: '3 + 1',
+    car_type: 'AC/ Non-AC'
+  },
+  {
+    id: 'toyota-fortuner',
+    name: 'Toyota Fortuner',
+    slug: 'toyota-fortuner',
+    brand: 'Toyota',
+    type: 'Luxury',
+    transmission: 'Automatic',
+    fuel_type: 'Diesel',
+    seats: 7,
+    price_per_day: 9500,
+    images: ['/fortuner.png'],
+    features: ['4x4 All-Wheel Drive', 'VIP Interior', '6+1 Seating', 'Ultimate Presence'],
+    description: 'Flagship luxury SUV for VIP guests, corporate delegation, grand weddings, and executive travel.',
+    is_available: true,
+    created_at: new Date().toISOString(),
+    price_per_km: 'Rs. 35/km',
+    per_day_running: '300km',
+    toll_parking: 'Extra',
+    capacity: '6 + 1',
+    car_type: 'AC'
+  },
+  {
+    id: 'tempo-32',
+    name: 'Tempo Traveller (32 Seater)',
+    slug: 'tempo-32',
+    brand: 'Force Motors',
     type: 'Bus',
     transmission: 'Manual',
     fuel_type: 'Diesel',
     seats: 32,
-    price_per_day: 9000,
-    images: ['/minibus.png'],
-    features: ['High Roof Cabin', 'AC / Non-AC Options', '32 Seater Layout', 'Wide View Windows'],
-    description: 'Spacious and highly comfortable compact passenger coach for large group tours.',
+    price_per_day: 9500,
+    images: ['/tempo32.png'],
+    features: ['AC & Non-AC Options', '32 Reclining Seats', 'HD Music & Entertainment', 'Huge Luggage Bay'],
+    description: 'Spacious 32-seater luxury coach ideal for large marriage groups, corporate outings, and pilgrimage tours.',
     is_available: true,
     created_at: new Date().toISOString(),
-    price_per_km: 'Rs. 24/km (Non-AC) | Rs. 28/km (AC)',
+    price_per_km: 'Rs. 28/km (Non-AC) | Rs. 32/km (AC)',
     per_day_running: '300km',
     toll_parking: 'Extra',
     capacity: '32 + 1',
-    car_type: 'Non-AC / AC'
+    car_type: 'Non-AC (Rs. 28/km) / AC (Rs. 32/km)'
   }
 ];
 
@@ -297,50 +360,175 @@ const SERVICES_RAW = [
 ];
 
 export const SERVICES: Service[] = SERVICES_RAW.map(serviceName => {
-  if (serviceName === "Airport Taxi in Pune") {
+  const lower = serviceName.toLowerCase();
+
+  // Airport services
+  if (lower.includes("airport") || lower.includes("flight")) {
     return {
       name: serviceName,
       images: ["/pune-airport-1.jpg", "/pune-airport-2.jpg"],
-      description: "Reliable airport transfers between Pune city and Pune International Airport. Safe, clean, and punctual chauffeur-driven cabs."
+      description: "Punctual & comfortable airport transfers connecting Pune Airport with Mumbai Airport and outstation locations."
     };
   }
-  if (serviceName === "Pune to Mumbai Cab" || serviceName === "Pune Mumbai Cab Service") {
+
+  // Mumbai / Thane / Panvel / Navi Mumbai
+  if (lower.includes("mumbai") || lower.includes("thane") || lower.includes("panvel")) {
     return {
       name: serviceName,
       images: ["/marine-drive.jpg"],
-      description: "Premium one-way and round-trip cab services between Pune and Mumbai. Travel comfortably via Express Highway with experienced drivers."
+      description: "Expressway cab service between Pune and Mumbai. Available for one-way drops and round trips 24/7."
     };
   }
-  if (serviceName === "Pune to Shrivardhan Cab") {
+
+  // Shirdi & Pilgrimage
+  if (lower.includes("shirdi") || lower.includes("shegaon") || lower.includes("tuljapur") || lower.includes("pandharpur") || lower.includes("akkalkot") || lower.includes("ayodhya")) {
     return {
       name: serviceName,
-      images: ["/shrivardhan-1.jpg", "/shrivardhan-2.jpg", "/shrivardhan-3.jpg", "/shrivardhan-4.jpg", "/shrivardhan-5.jpg"],
-      description: "Safe and comfortable cab service from Pune to the pristine beaches of Shrivardhan. Clean cars, professional drivers, and smooth rides."
+      images: ["/shirdi.jpg"],
+      description: "Spiritual pilgrimage tour package with experienced drivers, smooth highway rides, and hassle-free temple darshan."
     };
   }
-  if (serviceName === "Pune to Alibaug cab") {
+
+  // Lonavala & Khandala & Devkund
+  if (lower.includes("lonavla") || lower.includes("lonavala") || lower.includes("devkund")) {
     return {
       name: serviceName,
-      images: ["/alibaug-1.jpg", "/alibaug-2.jpg", "/alibaug-3.jpg", "/alibaug-4.jpg"],
-      description: "Book premium chauffeur-driven cabs from Pune to Alibaug. Perfect for weekend beach getaways, fort exploration, and resort holidays."
+      images: ["/lonavala.jpg"],
+      description: "Scenic weekend cab trips to Lonavala, Khandala, and Devkund waterfalls with professional mountain drivers."
     };
   }
-  if (serviceName === "Pune to Prati Balaji Mandir Cab") {
+
+  // Mahabaleshwar & Panchgani
+  if (lower.includes("mahabaleshwar") || lower.includes("panchgani") || lower.includes("satara")) {
     return {
       name: serviceName,
-      images: ["/balaji-1.jpg", "/balaji-2.jpg", "/balaji-3.jpg"],
-      description: "Spiritual day-trip from Pune to the beautiful Prati Balaji Mandir in Ketkawale. Clean vehicles and hassle-free darshan travels."
+      images: ["/mahabaleshwar.png"],
+      description: "Hill station car rental to Mahabaleshwar and Panchgani. Enjoy viewpoints, strawberry farms, and cool weather."
     };
   }
-  if (serviceName === "Pune Swaminarayan Mandir Cab") {
+
+  // Shrivardhan & Harihareshwar
+  if (lower.includes("shrivardhan") || lower.includes("harihareshwar")) {
     return {
       name: serviceName,
-      images: ["/swaminarayan-1.jpg", "/swaminarayan-2.jpg", "/swaminarayan-3.jpg"],
-      description: "Comfortable and hassle-free local sightseeing to the majestic BAPS Shri Swaminarayan Mandir in Pune. Perfect for family visits."
+      images: ["/shrivardhan-1.jpg", "/shrivardhan-2.jpg", "/shrivardhan-3.jpg"],
+      description: "Beach tour cab service to Shrivardhan and Harihareshwar. Clean air-conditioned cars for relaxing coastal getaways."
     };
   }
-  
-  return { name: serviceName };
+
+  // Alibaug & Murud Janjira
+  if (lower.includes("alibaug") || lower.includes("murud")) {
+    return {
+      name: serviceName,
+      images: ["/alibaug-1.jpg", "/alibaug-2.jpg"],
+      description: "Popular weekend getaway cabs from Pune to Alibaug beaches, forts, and luxury coastal resorts."
+    };
+  }
+
+  // Balaji & Swaminarayan
+  if (lower.includes("balaji")) {
+    return {
+      name: serviceName,
+      images: ["/balaji-1.jpg", "/balaji-2.jpg"],
+      description: "Dedicated day-trip cab service to Prati Balaji Mandir Ketkawale with family-friendly seating and clean vehicles."
+    };
+  }
+  if (lower.includes("swaminarayan")) {
+    return {
+      name: serviceName,
+      images: ["/swaminarayan-1.jpg", "/swaminarayan-2.jpg"],
+      description: "Local sightseeing cab package to the magnificent BAPS Shri Swaminarayan Mandir Pune."
+    };
+  }
+
+  // Trimbakeshwar / Nashik / Bhimashankar / Jyotirlinga
+  if (lower.includes("trimbakeshwar") || lower.includes("nashik") || lower.includes("jyotirlinga") || lower.includes("bhimashankar") || lower.includes("ashtavinayak") || lower.includes("jejuri")) {
+    return {
+      name: serviceName,
+      images: ["/trimbakeshwar.jpg"],
+      description: "Holy temple tour cab service to Jyotirlingas, Nashik wine yards, and Ashtavinayak sacred sites."
+    };
+  }
+
+  // Ellora / Aurangabad
+  if (lower.includes("ellora") || lower.includes("aurangabad")) {
+    return {
+      name: serviceName,
+      images: ["/ellora.jpg"],
+      description: "Heritage travel cab service to UNESCO World Heritage sites at Ellora Caves and historic Chhatrapati Sambhajinagar."
+    };
+  }
+
+  // Goa
+  if (lower.includes("goa")) {
+    return {
+      name: serviceName,
+      images: ["/goa.jpg"],
+      description: "Outstation road trip cabs from Pune to North & South Goa beaches with experienced long-haul drivers."
+    };
+  }
+
+  // Konkan / Ganpatipule / Ratnagiri / Tarkarli / Dapoli
+  if (lower.includes("konkan") || lower.includes("ganpatipule") || lower.includes("ratnagiri") || lower.includes("tarkarli") || lower.includes("dapoli")) {
+    return {
+      name: serviceName,
+      images: ["/konkan.png"],
+      description: "Exotic Konkan coastal tour packages covering clean beaches, seafood spots, and scenic seaside drives."
+    };
+  }
+
+  // Raigad
+  if (lower.includes("raigad")) {
+    return {
+      name: serviceName,
+      images: ["/hero-raigad-bg.png"],
+      description: "Historical fort tour cab service to Fort Raigad and capital of Swarajya with expert local route knowledge."
+    };
+  }
+
+  // Car specific rentals
+  if (lower.includes("dzire") || lower.includes("sedan")) {
+    return {
+      name: serviceName,
+      images: ["/dzire.png"],
+      description: "Affordable and comfortable Sedan cab rental for outstation rides, business visits, and family tours."
+    };
+  }
+  if (lower.includes("ertiga") || lower.includes("7 seater")) {
+    return {
+      name: serviceName,
+      images: ["/ertiga.png"],
+      description: "Spacious 6+1 Ertiga SUV rental in Pune for family trips, outstation tours, and group travel."
+    };
+  }
+  if (lower.includes("innova")) {
+    return {
+      name: serviceName,
+      images: ["/innova.png"],
+      description: "Luxury Innova & Innova Crysta rentals with captain seats for premium outstation long distance trips."
+    };
+  }
+  if (lower.includes("tempo") || lower.includes("traveller")) {
+    return {
+      name: serviceName,
+      images: ["/tempo17.png"],
+      description: "17 & 32 Seater AC Tempo Traveller rental for group trips, family functions, and corporate outings."
+    };
+  }
+  if (lower.includes("mini bus") || lower.includes("bus")) {
+    return {
+      name: serviceName,
+      images: ["/minibus.png"],
+      description: "Luxury mini bus hire in Pune for large group tours, weddings, and outstation trips."
+    };
+  }
+
+  // Fallback for all remaining general corporate/wedding/outstation services
+  return {
+    name: serviceName,
+    images: ["/fortuner.png"],
+    description: "Premium chauffeur-driven cab service in Pune with well-maintained fleet and transparent pricing."
+  };
 });
 
 // Let's also create structured Tours for our major/popular packages so they can be viewed on detail pages
