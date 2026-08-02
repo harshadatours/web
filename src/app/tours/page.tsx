@@ -10,7 +10,7 @@ import type { ManagedService } from '@/lib/services'
 
 function ServiceCard({ service, handleServiceWhatsApp }: { service: ManagedService, handleServiceWhatsApp: (name: string) => void }) {
   const [activeImgIdx, setActiveImgIdx] = useState(0)
-  const coverImg = service.images && service.images.length > 0 ? service.images[activeImgIdx] : "/fortuner.png"
+  const coverImg = service.images && service.images.length > 0 ? service.images[activeImgIdx] : "/hero-bg.png"
 
   return (
     <div className="glass rounded-3xl border-white/15 flex flex-col justify-between hover:scale-[1.03] hover:bg-white/5 transition-all duration-300 relative group overflow-hidden shadow-lg animate-in fade-in duration-300">

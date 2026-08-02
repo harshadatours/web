@@ -56,7 +56,7 @@ async function fetchServicesFromSupabase(): Promise<ManagedService[]> {
       const fallback = STATIC_FALLBACK_SERVICES.find(s => s.name.toLowerCase() === item.name?.toLowerCase() || s.id === item.id);
       const images = (fallback?.images && fallback.images.length > 0) 
         ? fallback.images 
-        : (item.images && Array.isArray(item.images) && item.images.length > 0 ? item.images : ["/fortuner.png"]);
+        : (item.images && Array.isArray(item.images) && item.images.length > 0 && !item.images[0].endsWith('.png') ? item.images : ["/hero-bg.png"]);
       const description = fallback?.description || item.description || "Premium outstation cab and chauffeur services in Pune.";
 
       return {
@@ -74,7 +74,7 @@ async function fetchServicesFromSupabase(): Promise<ManagedService[]> {
 
 export const getServices = unstable_cache(
   fetchServicesFromSupabase,
-  ['services-list-v5'],
+  ['services-list-v6'],
   { revalidate: 60, tags: ['services'] }
 );
 
